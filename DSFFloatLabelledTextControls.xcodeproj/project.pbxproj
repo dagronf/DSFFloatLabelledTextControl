@@ -11,6 +11,8 @@
 		2351F8522207D15C00EFA4F7 /* DSFFloatLabelledTextControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2351F84B2207D15C00EFA4F7 /* DSFFloatLabelledTextControl.framework */; };
 		2351F8532207D15C00EFA4F7 /* DSFFloatLabelledTextControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2351F84B2207D15C00EFA4F7 /* DSFFloatLabelledTextControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2351F8582207D16100EFA4F7 /* DSFFloatLabelledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A2B7FA2207931500B2FC77 /* DSFFloatLabelledTextField.swift */; };
+		2351F85B22082AD800EFA4F7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 2351F85922082AD800EFA4F7 /* LICENSE */; };
+		2351F85C22082AD800EFA4F7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2351F85A22082AD800EFA4F7 /* README.md */; };
 		23A2B7ED220792FE00B2FC77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A2B7EC220792FE00B2FC77 /* AppDelegate.swift */; };
 		23A2B7EF220792FF00B2FC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A2B7EE220792FF00B2FC77 /* Assets.xcassets */; };
 		23A2B7F2220792FF00B2FC77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A2B7F0220792FF00B2FC77 /* MainMenu.xib */; };
@@ -44,6 +46,8 @@
 		2351F84B2207D15C00EFA4F7 /* DSFFloatLabelledTextControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DSFFloatLabelledTextControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2351F84D2207D15C00EFA4F7 /* DSFFloatLabelledTextControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSFFloatLabelledTextControl.h; sourceTree = "<group>"; };
 		2351F84E2207D15C00EFA4F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2351F85922082AD800EFA4F7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		2351F85A22082AD800EFA4F7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		23A2B7E9220792FE00B2FC77 /* DSFFloatLabelledTextControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSFFloatLabelledTextControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23A2B7EC220792FE00B2FC77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23A2B7EE220792FF00B2FC77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 		23A2B7E0220792FE00B2FC77 = {
 			isa = PBXGroup;
 			children = (
+				2351F85922082AD800EFA4F7 /* LICENSE */,
+				2351F85A22082AD800EFA4F7 /* README.md */,
 				23A2B7EB220792FE00B2FC77 /* DSFFloatLabelledTextControls */,
 				2351F84C2207D15C00EFA4F7 /* DSFFloatLabelledTextControl */,
 				23A2B7EA220792FE00B2FC77 /* Products */,
@@ -212,7 +218,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2351F85B22082AD800EFA4F7 /* LICENSE in Resources */,
 				23A2B7EF220792FF00B2FC77 /* Assets.xcassets in Resources */,
+				2351F85C22082AD800EFA4F7 /* README.md in Resources */,
 				23A2B7F2220792FF00B2FC77 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
