@@ -20,10 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
 
-		self.firstField.setFonts(
-			primary: NSFont.systemFont(ofSize: 24),
-			secondary: NSFont.systemFont(ofSize: 14)
-		)
+//		self.firstField.setFonts(
+//			primary: NSFont.systemFont(ofSize: 24),
+//			secondary: NSFont.systemFont(ofSize: 14)
+//		)
+//		self.firstField.placeholderString = "Caterpillar"
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {

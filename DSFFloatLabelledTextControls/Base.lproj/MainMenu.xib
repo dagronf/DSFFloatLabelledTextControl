@@ -683,77 +683,92 @@
         <window title="DSFFloatLabelledTextControls" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="579" height="369"/>
+            <rect key="contentRect" x="335" y="390" width="448" height="337"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="579" height="369"/>
+                <rect key="frame" x="0.0" y="0.0" width="457" height="337"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-U6-h5r">
-                        <rect key="frame" x="20" y="205" width="539" height="144"/>
+                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="100" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-U6-h5r">
+                        <rect key="frame" x="20" y="144" width="417" height="173"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7UD-aH-0Q6" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextControl">
-                                <rect key="frame" x="0.0" y="105" width="539" height="39"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" placeholderString="First Name" drawsBackground="YES" id="nP8-H8-Q1b">
-                                    <font key="font" metaFont="system" size="28"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="18"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YX7-5K-f8t" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextControl">
-                                <rect key="frame" x="0.0" y="70" width="539" height="27"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Last Name" drawsBackground="YES" id="FvA-oq-YmH">
-                                    <font key="font" metaFont="system" size="18"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AJa-ZZ-rrB">
+                                <rect key="frame" x="0.0" y="77" width="417" height="96"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7UD-aH-0Q6" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextControl">
+                                        <rect key="frame" x="0.0" y="57" width="200" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="BaH-X6-YVd"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" placeholderString="First Name" drawsBackground="YES" id="nP8-H8-Q1b">
+                                            <font key="font" metaFont="system" size="28"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="G1k-eG-Uhc">
+                                        <rect key="frame" x="206" y="0.0" width="5" height="96"/>
+                                    </box>
+                                    <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YX7-5K-f8t" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextControl">
+                                        <rect key="frame" x="217" y="57" width="200" height="39"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Last Name" drawsBackground="YES" id="FvA-oq-YmH">
+                                            <font key="font" metaFont="system" size="28"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YX7-5K-f8t" firstAttribute="width" secondItem="7UD-aH-0Q6" secondAttribute="width" id="Ug3-cc-S37"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="XWd-zd-jgX">
+                                <rect key="frame" x="0.0" y="66" width="417" height="5"/>
+                            </box>
                             <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="jaf-uH-3yQ" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextControl">
-                                <rect key="frame" x="0.0" y="35" width="539" height="27"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Address 1" drawsBackground="YES" id="NE0-ug-kXQ">
+                                <rect key="frame" x="0.0" y="34" width="417" height="26"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Address 1" drawsBackground="YES" id="NE0-ug-kXQ">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textField>
                             <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="afv-Re-X0A" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextControl">
-                                <rect key="frame" x="0.0" y="0.0" width="539" height="27"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Address 2" drawsBackground="YES" id="2hE-xp-heh">
+                                <rect key="frame" x="0.0" y="0.0" width="417" height="26"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Address 2" drawsBackground="YES" id="2hE-xp-heh">
                                     <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="afv-Re-X0A" firstAttribute="leading" secondItem="7UD-aH-0Q6" secondAttribute="leading" id="AlZ-IT-Gio"/>
-                            <constraint firstItem="YX7-5K-f8t" firstAttribute="trailing" secondItem="7UD-aH-0Q6" secondAttribute="trailing" id="BtU-E0-FO9"/>
-                            <constraint firstAttribute="trailing" secondItem="7UD-aH-0Q6" secondAttribute="trailing" id="EAe-GK-W3a"/>
-                            <constraint firstItem="jaf-uH-3yQ" firstAttribute="trailing" secondItem="7UD-aH-0Q6" secondAttribute="trailing" id="NzT-Zu-P3f"/>
-                            <constraint firstItem="jaf-uH-3yQ" firstAttribute="leading" secondItem="7UD-aH-0Q6" secondAttribute="leading" id="VlD-4T-W5H"/>
-                            <constraint firstItem="afv-Re-X0A" firstAttribute="trailing" secondItem="7UD-aH-0Q6" secondAttribute="trailing" id="Z1G-Lv-QnU"/>
-                            <constraint firstItem="YX7-5K-f8t" firstAttribute="leading" secondItem="7UD-aH-0Q6" secondAttribute="leading" id="txw-1X-1Sj"/>
-                            <constraint firstItem="7UD-aH-0Q6" firstAttribute="leading" secondItem="Zjs-U6-h5r" secondAttribute="leading" id="zmk-78-nzd"/>
+                            <constraint firstItem="AJa-ZZ-rrB" firstAttribute="leading" secondItem="Zjs-U6-h5r" secondAttribute="leading" id="1I4-kx-Szg"/>
+                            <constraint firstAttribute="trailing" secondItem="AJa-ZZ-rrB" secondAttribute="trailing" id="Rw9-RT-yVO"/>
+                            <constraint firstAttribute="trailing" secondItem="afv-Re-X0A" secondAttribute="trailing" id="Xme-ec-DUc"/>
+                            <constraint firstItem="afv-Re-X0A" firstAttribute="leading" secondItem="Zjs-U6-h5r" secondAttribute="leading" id="ajU-xn-CLP"/>
+                            <constraint firstItem="jaf-uH-3yQ" firstAttribute="leading" secondItem="Zjs-U6-h5r" secondAttribute="leading" id="oah-9x-RmV"/>
+                            <constraint firstAttribute="trailing" secondItem="jaf-uH-3yQ" secondAttribute="trailing" id="r2x-LQ-vV5"/>
                         </constraints>
                         <visibilityPriorities>
                             <integer value="1000"/>
@@ -775,7 +790,7 @@
                     <constraint firstItem="Zjs-U6-h5r" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="sc0-EL-WIg"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="82.5" y="175.5"/>
+            <point key="canvasLocation" x="-257" y="159.5"/>
         </window>
     </objects>
 </document>

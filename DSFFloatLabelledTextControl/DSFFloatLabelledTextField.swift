@@ -8,68 +8,41 @@
 
 import Cocoa
 
-//extension NSWindow
-//{
-//	func endEditing()
-//	{
-//	- (bool)endEditing;
-//	{
-//	bool success;
-//	id responder = [self firstResponder];
-//
-//	// If we're dealing with the field editor, the real first responder is
-//	// its delegate.
-//
-//	if ( (responder != nil) && [responder isKindOfClass:[NSTextView class]] && [(NSTextView*)responder isFieldEditor] )
-//	responder = ( [[responder delegate] isKindOfClass:[NSResponder class]] ) ? [responder delegate] : nil;
-//
-//	success = [self makeFirstResponder:nil];
-//
-//	// Return first responder status.
-//
-//	if ( success && responder != nil )
-//	[self makeFirstResponder:responder];
-//
-//	return success;
-//	}
-//
-//	- (void)forceEndEditing;
-//	{
-//	[self endEditingFor:nil];
-//	}
-//}
-
 class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 {
 	var topOffset: CGFloat = 0
 
 	override func titleRect(forBounds rect: NSRect) -> NSRect
 	{
-		return NSRect(x: rect.origin.x, y: rect.origin.y + self.topOffset, width: rect.width, height: rect.height)
+		let offset: CGFloat = self.isBezeled ? 5 : 1
+		return NSRect(x: rect.origin.x, y: rect.origin.y + self.topOffset - offset, width: rect.width, height: rect.height)
 	}
 
 	override func edit(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, event: NSEvent?)
 	{
-		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + topOffset, width: rect.width, height: rect.height)
+		let offset: CGFloat = self.isBezeled ? 5 : 1
+		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + topOffset - offset, width: rect.width, height: rect.height)
 		super.edit(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, event: event)
 	}
 
 	override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int)
 	{
-		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + topOffset, width: rect.width, height: rect.height)
+		let offset: CGFloat = self.isBezeled ? 5 : 1
+		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + topOffset - offset, width: rect.width, height: rect.height)
 		super.select(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
 	}
 
 	override func drawInterior(withFrame cellFrame: NSRect, in controlView: NSView)
 	{
-		let insetRect = NSRect(x: cellFrame.origin.x, y: cellFrame.origin.y + topOffset, width: cellFrame.width, height: cellFrame.height)
+		let offset: CGFloat = self.isBezeled ? 5 : 1
+		let insetRect = NSRect(x: cellFrame.origin.x, y: cellFrame.origin.y + topOffset - offset, width: cellFrame.width, height: cellFrame.height)
 		super.drawInterior(withFrame: insetRect, in: controlView)
 	}
 }
 
 @IBDesignable open class DSFFloatLabelledTextField: NSTextField
 {
-	@IBInspectable public var placeholderTextSize: CGFloat = 12
+	@IBInspectable public var placeholderTextSize: CGFloat = 13
 	{
 		didSet
 		{
@@ -91,6 +64,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 	private var heightConstraint: NSLayoutConstraint?
 
 	private var fontObserver: NSKeyValueObservation?
+	private var placeholderObserver: NSKeyValueObservation?
 
 	open func setFonts(primary: NSFont, secondary: NSFont)
 	{
@@ -106,24 +80,15 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		self.fontObserver = self.observe(\.font, options: [.new]) { (field, state) in
 			self.reconfigureControl()
 		}
+
+		/// Listen to changes in the placeholder text so we can reflect it in the floater
+		self.placeholderObserver = self.observe(\.placeholderString, options: [.new], changeHandler: { (field, state) in
+			self.floatingLabel?.stringValue = self.placeholderString!
+			self.reconfigureControl()
+		})
 	}
 
-	private func fieldCell() -> DSFFloatLabelledTextFieldCell
-	{
-		return self.cell as! DSFFloatLabelledTextFieldCell
-	}
-
-	private func currentlyBeingEdited() -> Bool
-	{
-		if let responder = self.window?.firstResponder,
-			let view = responder as? NSTextView,
-			view.isFieldEditor, view.delegate === self
-		{
-			return true
-		}
-		return false
-	}
-
+	/// Change the layout if any changes occur
 	private func reconfigureControl()
 	{
 		if self.currentlyBeingEdited()
@@ -142,17 +107,25 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 		self.setContentHuggingPriority(.defaultLow, for: .horizontal)
+		self.usesSingleLineMode = true
 
 		self.delegate = self
 
-		let label = NSTextField(labelWithString: "Placeholder")
+		let label = NSTextField()
+		label.wantsLayer = true
+		label.isEditable = false
+		label.isSelectable = false
+		label.isEnabled = true
+		label.isBezeled = false
+		label.isBordered = false
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
-		label.textColor = NSColor.disabledControlTextColor
+		label.textColor = NSColor.controlAccentColor
 		label.stringValue = self.placeholderString ?? ""
 		label.alphaValue = 0.0
+		label.alignment = self.alignment
+		label.drawsBackground = false
 		self.addSubview(label)
-
 		self.floatingLabel = label
 
 		self.floatingTop = NSLayoutConstraint(
@@ -162,9 +135,17 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 			multiplier: 1.0, constant: 10)
 		self.addConstraint(self.floatingTop!)
 
-		var x = NSLayoutConstraint(item: label, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0)
+		var x = NSLayoutConstraint(
+			item: label, attribute: .leading,
+			relatedBy: .equal,
+			toItem: self, attribute: .leading,
+			multiplier: 1.0, constant: self.isBezeled ? 4 : 0)
 		self.addConstraint(x)
-		x = NSLayoutConstraint(item: label, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0)
+		x = NSLayoutConstraint(
+			item: label, attribute: .trailing,
+			relatedBy: .equal,
+			toItem: self, attribute: .trailing,
+			multiplier: 1.0, constant: self.isBezeled ? -4 : 0)
 		self.addConstraint(x)
 
 		self.heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.controlHeight())
@@ -174,14 +155,25 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		c.topOffset = self.placeholderHeight()
 
 		c.isEditable = true
+		c.wraps = false
+		c.usesSingleLineMode = true
 		c.placeholderString = self.placeholderString
 		c.title = self.stringValue
 		c.font = self.font
+		c.isBordered = self.isBordered
+		c.isBezeled = self.isBezeled
+		c.bezelStyle = self.bezelStyle
+		c.isScrollable = true
+		c.isContinuous = self.isContinuous
+		c.alignment = self.alignment
+		c.formatter = self.formatter
+
 		self.cell? = c
 
 		self.expandFrame()
 	}
 
+	/// Returns the height of the placeholder text
 	private func placeholderHeight() -> CGFloat
 	{
 		let text: NSString = self.placeholderString! as NSString
@@ -189,6 +181,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		return rect.height
 	}
 
+	/// Returns the height of the primary (editable) text
 	private func textHeight() -> CGFloat
 	{
 		let text: NSString = self.placeholderString! as NSString
@@ -196,11 +189,13 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		return rect.height
 	}
 
+	/// Returns the total height of the control given the font settings
 	private func controlHeight() -> CGFloat
 	{
 		return self.textHeight() + self.placeholderHeight()
 	}
 
+	/// Rebuild the frame of the text field to match the new settings
 	private func expandFrame()
 	{
 		var x = self.frame.size
@@ -213,6 +208,8 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		self.needsLayout = true
 	}
 }
+
+// MARK: - Focus and editing
 
 extension DSFFloatLabelledTextField: NSTextFieldDelegate
 {
@@ -232,7 +229,54 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate
 			self.hidePlaceholder()
 		}
 	}
+
+	fileprivate func amIInFocus() -> Bool
+	{
+		if let fr = self.window?.firstResponder as? NSTextView,
+			self.window?.fieldEditor(false, for: nil) != nil,
+			fr.delegate === self
+		{
+			return true
+		}
+		return false
+	}
+
+	override open func becomeFirstResponder() -> Bool
+	{
+
+		let x = super.becomeFirstResponder()
+		if x && amIInFocus()
+		{
+			self.floatingLabel?.textColor = NSColor.controlAccentColor
+			self.floatingLabel?.needsDisplay = true
+		}
+		return x
+	}
+
+	open func controlTextDidEndEditing(_ obj: Notification) {
+		self.floatingLabel?.textColor = NSColor.placeholderTextColor
+	}
+
+
+	private func fieldCell() -> DSFFloatLabelledTextFieldCell
+	{
+		return self.cell as! DSFFloatLabelledTextFieldCell
+	}
+
+	/// If we are currently being edited (has focus) then lose focus BEFORE the changes
+	private func currentlyBeingEdited() -> Bool
+	{
+		if let responder = self.window?.firstResponder,
+			let view = responder as? NSTextView,
+			view.isFieldEditor, view.delegate === self
+		{
+			return true
+		}
+		return false
+	}
 }
+
+// MARK: - Animations
 
 extension DSFFloatLabelledTextField
 {
@@ -246,6 +290,7 @@ extension DSFFloatLabelledTextField
 			self.floatingLabel?.alphaValue = 1.0
 			self.layoutSubtreeIfNeeded()
 		}, completionHandler: {
+
 			//
 		})
 	}
@@ -256,7 +301,7 @@ extension DSFFloatLabelledTextField
 		NSAnimationContext.runAnimationGroup({ context in
 			context.allowsImplicitAnimation = true
 			context.duration = 0.4
-			self.floatingTop?.constant = 10
+			self.floatingTop?.constant = self.textHeight() / 1.5
 			self.floatingLabel?.alphaValue = 0.0
 			self.layoutSubtreeIfNeeded()
 		}, completionHandler: {
