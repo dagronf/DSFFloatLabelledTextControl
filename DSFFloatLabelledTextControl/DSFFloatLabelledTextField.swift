@@ -98,6 +98,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 	{
 		// Clean up if the view has been moved to another parent
 		self.floatingLabel?.removeFromSuperview()
+		self.floatingLabel = nil
 
 		// Setup the control
 		self.commonSetup()
@@ -116,6 +117,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		}
 	}
 
+	/// Build the floating label
 	private func createFloatingLabel()
 	{
 		let label = NSTextField()
@@ -157,6 +159,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 		self.addConstraint(x)
 	}
 
+	/// Build the text field's custom cell
 	private func createCustomCell()
 	{
 		let customCell = DSFFloatLabelledTextFieldCell()
@@ -228,8 +231,9 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell
 	/// Change the layout if any changes occur
 	private func reconfigureControl()
 	{
-		if self.currentlyBeingEdited()
+		if self.isCurrentFocus()
 		{
+			/// If we are currently editing, then finish before changing.
 			self.window?.endEditing(for: nil)
 		}
 		self.fieldCell().topOffset = self.placeholderHeight()
@@ -267,30 +271,26 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate
 		}
 	}
 
-	fileprivate func isCurrentFocus() -> Bool
-	{
-		if let fr = self.window?.firstResponder as? NSTextView,
-			self.window?.fieldEditor(false, for: nil) != nil,
-			fr.delegate === self
-		{
-			return true
-		}
-		return false
-	}
-
 	open override func becomeFirstResponder() -> Bool
 	{
 		let becomeResult = super.becomeFirstResponder()
 		if becomeResult && self.isCurrentFocus()
 		{
-			self.floatingLabel?.textColor = NSColor.controlAccentColor
-			self.floatingLabel?.needsDisplay = true
+			// Set the color of the 'label' to match the current focus color.
+			// We need to perform this on the main thread after the current set of notifications are processed
+			// Why? We (occasionally) receive a 'controlTextDidEndEditing' message AFTER we receive a
+			// 'becomeFirstResponder'.  I've read that this is related to the text field automatically selecting
+			// text when taking focus, but I haven't been able to verify this in any useful manner.
+			DispatchQueue.main.async { [weak self] in
+				self?.floatingLabel?.textColor = NSColor.controlAccentColor
+			}
 		}
 		return becomeResult
 	}
 
 	open func controlTextDidEndEditing(_ obj: Notification)
 	{
+		// When we lose focus, set the label color back to secondary color
 		self.floatingLabel?.textColor = NSColor.secondaryLabelColor
 	}
 
@@ -300,12 +300,15 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate
 		return self.cell as! DSFFloatLabelledTextFieldCell
 	}
 
-	/// If we are currently being edited (has focus) then lose focus BEFORE the changes
-	private func currentlyBeingEdited() -> Bool
+	/// Does our text field currently have input focus?
+	private func isCurrentFocus() -> Bool
 	{
-		if let responder = self.window?.firstResponder,
-			let view = responder as? NSTextView,
-			view.isFieldEditor, view.delegate === self
+		// 1. Get the window's first responder
+		// 2. Check is has an active field editor
+		// 3. Is the delegate of the field editor us?
+		if let fr = self.window?.firstResponder as? NSTextView,
+			self.window?.fieldEditor(false, for: nil) != nil,
+			fr.delegate === self
 		{
 			return true
 		}
