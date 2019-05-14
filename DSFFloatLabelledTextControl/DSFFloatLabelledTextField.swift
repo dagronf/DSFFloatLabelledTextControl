@@ -104,6 +104,15 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		}
 	}
 
+	private func floatTextColor() -> NSColor {
+		if #available(macOS 10.14, *) {
+			return NSColor.controlAccentColor
+		}
+		else {
+			return NSColor.headerTextColor
+		}
+	}
+
 	/// Build the floating label
 	private func createFloatingLabel() {
 		let label = NSTextField()
@@ -115,7 +124,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		label.isBordered = false
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
-		label.textColor = NSColor.controlAccentColor
+		label.textColor = self.floatTextColor()
 		label.stringValue = self.placeholderString ?? ""
 		label.alphaValue = 0.0
 		label.alignment = self.alignment
@@ -254,7 +263,7 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 			// 'becomeFirstResponder'.  I've read that this is related to the text field automatically selecting
 			// text when taking focus, but I haven't been able to verify this in any useful manner.
 			DispatchQueue.main.async { [weak self] in
-				self?.floatingLabel?.textColor = NSColor.controlAccentColor
+				self?.floatingLabel?.textColor = self?.floatTextColor()
 			}
 		}
 		return becomeResult
