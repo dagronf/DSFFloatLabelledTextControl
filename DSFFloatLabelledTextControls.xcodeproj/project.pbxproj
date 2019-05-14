@@ -55,7 +55,7 @@
 		23A2B7F3220792FF00B2FC77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23A2B7F4220792FF00B2FC77 /* DSFFloatLabelledTextControls.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFFloatLabelledTextControls.entitlements; sourceTree = "<group>"; };
 		23A2B7FA2207931500B2FC77 /* DSFFloatLabelledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFFloatLabelledTextField.swift; sourceTree = "<group>"; };
-		23ACF96D228A3F6600FF6594 /* DSFFloatLabelledTextControls.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFFloatLabelledTextControls.podspec; sourceTree = "<group>"; };
+		23ACF96D228A3F6600FF6594 /* DSFFloatLabelledTextControl.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFFloatLabelledTextControl.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 		23A2B7E0220792FE00B2FC77 = {
 			isa = PBXGroup;
 			children = (
-				23ACF96D228A3F6600FF6594 /* DSFFloatLabelledTextControls.podspec */,
+				23ACF96D228A3F6600FF6594 /* DSFFloatLabelledTextControl.podspec */,
 				2351F85922082AD800EFA4F7 /* LICENSE */,
 				2351F85A22082AD800EFA4F7 /* README.md */,
 				23A2B7EB220792FE00B2FC77 /* DSFFloatLabelledTextControls */,
@@ -457,7 +457,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFFloatLabelledTextControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -477,7 +477,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.darrenford.DSFFloatLabelledTextControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "DSFFloatLabelledTextControls"
+  s.name         = "DSFFloatLabelledTextControl"
   s.version      = "1.0"
   s.summary      = "A macOS Cocoa single-line NSTextField that implements the Float Label Pattern"
   s.description  = <<-DESC

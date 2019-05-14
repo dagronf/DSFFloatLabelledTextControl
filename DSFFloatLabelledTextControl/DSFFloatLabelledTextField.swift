@@ -57,13 +57,13 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 @IBDesignable open class DSFFloatLabelledTextField: NSTextField {
 	@IBInspectable public var placeholderTextSize: CGFloat = 10 {
 		didSet {
-			self.floatingLabel?.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
+			self.floatingLabel.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
 			self.reconfigureControl()
 		}
 	}
 
 	/// Floating label
-	private var floatingLabel: NSTextField?
+	private let floatingLabel = NSTextField()
 
 	/// Is the label currently showing
 	private var isShowing: Bool = false
@@ -80,15 +80,11 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 
 	/// Set the fonts to be used in the control
 	open func setFonts(primary: NSFont, secondary: NSFont) {
-		self.floatingLabel?.font = secondary
+		self.floatingLabel.font = secondary
 		self.font = primary
 	}
 
 	open override func viewDidMoveToWindow() {
-		// Clean up if the view has been moved to another parent
-		self.floatingLabel?.removeFromSuperview()
-		self.floatingLabel = nil
-
 		// Setup the control
 		self.commonSetup()
 
@@ -99,7 +95,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 
 		// Listen to changes in the placeholder text so we can reflect it in the floater
 		self.placeholderObserver = self.observe(\.placeholderString, options: [.new]) { _, _ in
-			self.floatingLabel?.stringValue = self.placeholderString!
+			self.floatingLabel.stringValue = self.placeholderString!
 			self.reconfigureControl()
 		}
 	}
@@ -115,25 +111,26 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 
 	/// Build the floating label
 	private func createFloatingLabel() {
-		let label = NSTextField()
-		label.wantsLayer = true
-		label.isEditable = false
-		label.isSelectable = false
-		label.isEnabled = true
-		label.isBezeled = false
-		label.isBordered = false
-		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
-		label.textColor = self.floatTextColor()
-		label.stringValue = self.placeholderString ?? ""
-		label.alphaValue = 0.0
-		label.alignment = self.alignment
-		label.drawsBackground = false
-		self.addSubview(label)
-		self.floatingLabel = label
+		if self.floatingLabel.superview == nil {
+			self.addSubview(self.floatingLabel)
+		}
+
+		self.floatingLabel.wantsLayer = true
+		self.floatingLabel.isEditable = false
+		self.floatingLabel.isSelectable = false
+		self.floatingLabel.isEnabled = true
+		self.floatingLabel.isBezeled = false
+		self.floatingLabel.isBordered = false
+		self.floatingLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.floatingLabel.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
+		self.floatingLabel.textColor = self.floatTextColor()
+		self.floatingLabel.stringValue = self.placeholderString ?? ""
+		self.floatingLabel.alphaValue = 0.0
+		self.floatingLabel.alignment = self.alignment
+		self.floatingLabel.drawsBackground = false
 
 		self.floatingTop = NSLayoutConstraint(
-			item: self.floatingLabel!, attribute: .top,
+			item: self.floatingLabel, attribute: .top,
 			relatedBy: .equal,
 			toItem: self, attribute: .top,
 			multiplier: 1.0, constant: 10
@@ -141,7 +138,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		self.addConstraint(self.floatingTop!)
 
 		var x = NSLayoutConstraint(
-			item: label, attribute: .leading,
+			item: self.floatingLabel, attribute: .leading,
 			relatedBy: .equal,
 			toItem: self, attribute: .leading,
 			multiplier: 1.0, constant: self.isBezeled ? 4 : 0
@@ -149,7 +146,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		self.addConstraint(x)
 
 		x = NSLayoutConstraint(
-			item: label, attribute: .trailing,
+			item: self.floatingLabel, attribute: .trailing,
 			relatedBy: .equal,
 			toItem: self, attribute: .trailing,
 			multiplier: 1.0, constant: self.isBezeled ? -4 : 0
@@ -205,7 +202,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 	/// Returns the height of the placeholder text
 	private func placeholderHeight() -> CGFloat {
 		let layoutManager = NSLayoutManager()
-		return layoutManager.defaultLineHeight(for: self.floatingLabel!.font!) + 1
+		return layoutManager.defaultLineHeight(for: self.floatingLabel.font!) + 1
 	}
 
 	/// Returns the height of the primary (editable) text
@@ -263,7 +260,7 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 			// 'becomeFirstResponder'.  I've read that this is related to the text field automatically selecting
 			// text when taking focus, but I haven't been able to verify this in any useful manner.
 			DispatchQueue.main.async { [weak self] in
-				self?.floatingLabel?.textColor = self?.floatTextColor()
+				self?.floatingLabel.textColor = self?.floatTextColor()
 			}
 		}
 		return becomeResult
@@ -271,7 +268,7 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 
 	open func controlTextDidEndEditing(_: Notification) {
 		// When we lose focus, set the label color back to secondary color
-		self.floatingLabel?.textColor = NSColor.secondaryLabelColor
+		self.floatingLabel.textColor = NSColor.secondaryLabelColor
 	}
 
 	/// Helper function to get the current cell as the custom cell type
@@ -302,7 +299,7 @@ extension DSFFloatLabelledTextField {
 			context.allowsImplicitAnimation = true
 			context.duration = 0.4
 			self.floatingTop?.constant = 0
-			self.floatingLabel?.alphaValue = 1.0
+			self.floatingLabel.alphaValue = 1.0
 			self.layoutSubtreeIfNeeded()
 		}, completionHandler: {
 			//
@@ -315,7 +312,7 @@ extension DSFFloatLabelledTextField {
 			context.allowsImplicitAnimation = true
 			context.duration = 0.4
 			self.floatingTop?.constant = self.textHeight() / 1.5
-			self.floatingLabel?.alphaValue = 0.0
+			self.floatingLabel.alphaValue = 0.0
 			self.layoutSubtreeIfNeeded()
 		}, completionHandler: {
 			//

@@ -10,7 +10,12 @@ I was curious as to whether this pattern would work for a Mac program.
 
 ## Usage
 
+### Directly
 Copy the `DSFFloatLabelledTextField.swift` into your project.  This class inherits directly from `NSTextField` so all settings that you make on a text field (eg. alignment) should also apply here.
+
+### Cocoapods
+
+Add `pod 'DSFFloatLabelledTextControl', :git => 'https://github.com/dagronf/DSFFloatLabelledTextControl'` to your podfile.
 
 ### Interface builder
 
