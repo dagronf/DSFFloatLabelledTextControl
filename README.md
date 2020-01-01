@@ -2,6 +2,11 @@
 
 A macOS Cocoa single-line NSTextField that implements the Float Label Pattern.  You can read about the float pattern [here](http://mds.is/float-label-pattern/)
 
+![](https://img.shields.io/github/v/tag/dagronf/DSFFloatLabelledTextControl) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
+
+## Screenshot
+
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFFloatingLabel/floating_label_text_field.gif)
 
 ## Why?
@@ -53,6 +58,7 @@ func changeFonts()
 
 ## License
 
+```
 MIT License
 
 Copyright (c) 2019 Darren Ford
@@ -74,3 +80,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```

@@ -27,7 +27,7 @@
 
 import Cocoa
 
-import DSFFloatLabelledTextControl
+import DSFFloatLabelledTextField
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

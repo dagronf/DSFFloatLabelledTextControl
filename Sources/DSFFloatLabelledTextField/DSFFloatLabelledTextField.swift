@@ -27,33 +27,6 @@
 
 import Cocoa
 
-class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
-	var topOffset: CGFloat = 0
-
-	private func offset() -> CGFloat {
-		return self.topOffset - (self.isBezeled ? 5 : 1)
-	}
-
-	override func titleRect(forBounds rect: NSRect) -> NSRect {
-		return NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
-	}
-
-	override func edit(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, event: NSEvent?) {
-		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
-		super.edit(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, event: event)
-	}
-
-	override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
-		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
-		super.select(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
-	}
-
-	override func drawInterior(withFrame cellFrame: NSRect, in controlView: NSView) {
-		let insetRect = NSRect(x: cellFrame.origin.x, y: cellFrame.origin.y + self.offset(), width: cellFrame.width, height: cellFrame.height)
-		super.drawInterior(withFrame: insetRect, in: controlView)
-	}
-}
-
 @IBDesignable open class DSFFloatLabelledTextField: NSTextField {
 	@IBInspectable public var placeholderTextSize: CGFloat = 10 {
 		didSet {
@@ -78,6 +51,38 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 	private var fontObserver: NSKeyValueObservation?
 	private var placeholderObserver: NSKeyValueObservation?
 
+	/// Returns the height of the placeholder text
+	var placeholderHeight: CGFloat {
+		let layoutManager = NSLayoutManager()
+		return layoutManager.defaultLineHeight(for: self.floatingLabel.font!) + 1
+	}
+
+	/// Returns the height of the primary (editable) text
+	private var textHeight: CGFloat {
+		let layoutManager = NSLayoutManager()
+		return layoutManager.defaultLineHeight(for: self.font!) + 1
+	}
+
+	/// Returns the total height of the control given the font settings
+	private var controlHeight: CGFloat {
+		return self.textHeight + self.placeholderHeight
+	}
+
+	/// Returns of the color for the floating text
+	private var floatTextColor: NSColor {
+		if #available(macOS 10.14, *) {
+			return NSColor.controlAccentColor
+		}
+		else {
+			return NSColor.headerTextColor
+		}
+	}
+
+	/// Return the cell as a float cell type
+	private var fieldCell: DSFFloatLabelledTextFieldCell {
+		return self.cell as! DSFFloatLabelledTextFieldCell
+	}
+
 	/// Set the fonts to be used in the control
 	open func setFonts(primary: NSFont, secondary: NSFont) {
 		self.floatingLabel.font = secondary
@@ -100,15 +105,6 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		}
 	}
 
-	private func floatTextColor() -> NSColor {
-		if #available(macOS 10.14, *) {
-			return NSColor.controlAccentColor
-		}
-		else {
-			return NSColor.headerTextColor
-		}
-	}
-
 	/// Build the floating label
 	private func createFloatingLabel() {
 		if self.floatingLabel.superview == nil {
@@ -123,7 +119,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		self.floatingLabel.isBordered = false
 		self.floatingLabel.translatesAutoresizingMaskIntoConstraints = false
 		self.floatingLabel.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
-		self.floatingLabel.textColor = self.floatTextColor()
+		self.floatingLabel.textColor = self.floatTextColor
 		self.floatingLabel.stringValue = self.placeholderString ?? ""
 		self.floatingLabel.alphaValue = 0.0
 		self.floatingLabel.alignment = self.alignment
@@ -157,7 +153,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 	/// Build the text field's custom cell
 	private func createCustomCell() {
 		let customCell = DSFFloatLabelledTextFieldCell()
-		customCell.topOffset = self.placeholderHeight()
+		customCell.topOffset = self.placeholderHeight
 
 		customCell.isEditable = true
 		customCell.wraps = false
@@ -189,7 +185,7 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 			item: self, attribute: .height,
 			relatedBy: .equal,
 			toItem: nil, attribute: .notAnAttribute,
-			multiplier: 1.0, constant: self.controlHeight()
+			multiplier: 1.0, constant: self.controlHeight
 		)
 		self.addConstraint(self.heightConstraint!)
 
@@ -199,30 +195,13 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		}
 	}
 
-	/// Returns the height of the placeholder text
-	private func placeholderHeight() -> CGFloat {
-		let layoutManager = NSLayoutManager()
-		return layoutManager.defaultLineHeight(for: self.floatingLabel.font!) + 1
-	}
-
-	/// Returns the height of the primary (editable) text
-	private func textHeight() -> CGFloat {
-		let layoutManager = NSLayoutManager()
-		return layoutManager.defaultLineHeight(for: self.font!) + 1
-	}
-
-	/// Returns the total height of the control given the font settings
-	private func controlHeight() -> CGFloat {
-		return self.textHeight() + self.placeholderHeight()
-	}
-
 	/// Change the layout if any changes occur
 	private func reconfigureControl() {
 		if self.isCurrentFocus() {
 			/// If we are currently editing, then finish before changing.
 			self.window?.endEditing(for: nil)
 		}
-		self.fieldCell().topOffset = self.placeholderHeight()
+		self.fieldCell.topOffset = self.placeholderHeight
 
 		self.expandFrame()
 		self.needsLayout = true
@@ -230,8 +209,8 @@ class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 
 	/// Rebuild the frame of the text field to match the new settings
 	private func expandFrame() {
-		self.heightConstraint?.constant = self.controlHeight()
-		self.fieldCell().topOffset = self.placeholderHeight()
+		self.heightConstraint?.constant = self.controlHeight
+		self.fieldCell.topOffset = self.placeholderHeight
 	}
 }
 
@@ -260,7 +239,7 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 			// 'becomeFirstResponder'.  I've read that this is related to the text field automatically selecting
 			// text when taking focus, but I haven't been able to verify this in any useful manner.
 			DispatchQueue.main.async { [weak self] in
-				self?.floatingLabel.textColor = self?.floatTextColor()
+				self?.floatingLabel.textColor = self?.floatTextColor
 			}
 		}
 		return becomeResult
@@ -269,11 +248,6 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 	open func controlTextDidEndEditing(_: Notification) {
 		// When we lose focus, set the label color back to secondary color
 		self.floatingLabel.textColor = NSColor.secondaryLabelColor
-	}
-
-	/// Helper function to get the current cell as the custom cell type
-	private func fieldCell() -> DSFFloatLabelledTextFieldCell {
-		return self.cell as! DSFFloatLabelledTextFieldCell
 	}
 
 	/// Does our text field currently have input focus?
@@ -311,7 +285,7 @@ extension DSFFloatLabelledTextField {
 		NSAnimationContext.runAnimationGroup({ context in
 			context.allowsImplicitAnimation = true
 			context.duration = 0.4
-			self.floatingTop?.constant = self.textHeight() / 1.5
+			self.floatingTop?.constant = self.textHeight / 1.5
 			self.floatingLabel.alphaValue = 0.0
 			self.layoutSubtreeIfNeeded()
 		}, completionHandler: {
@@ -319,3 +293,33 @@ extension DSFFloatLabelledTextField {
 		})
 	}
 }
+
+// MARK: - Cell definition
+
+private class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
+	var topOffset: CGFloat = 0
+
+	private func offset() -> CGFloat {
+		return self.topOffset - (self.isBezeled ? 5 : 1)
+	}
+
+	override func titleRect(forBounds rect: NSRect) -> NSRect {
+		return NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
+	}
+
+	override func edit(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, event: NSEvent?) {
+		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
+		super.edit(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, event: event)
+	}
+
+	override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
+		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
+		super.select(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
+	}
+
+	override func drawInterior(withFrame cellFrame: NSRect, in controlView: NSView) {
+		let insetRect = NSRect(x: cellFrame.origin.x, y: cellFrame.origin.y + self.offset(), width: cellFrame.width, height: cellFrame.height)
+		super.drawInterior(withFrame: insetRect, in: controlView)
+	}
+}
+
