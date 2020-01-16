@@ -78,10 +78,29 @@ import Cocoa
 		}
 	}
 
-	/// Return the cell as a float cell type
-	private var fieldCell: DSFFloatLabelledTextFieldCell {
-		return self.cell as! DSFFloatLabelledTextFieldCell
-	}
+	/// Return the custom cell type
+	fileprivate lazy var fieldCell: DSFFloatLabelledTextFieldCell = {
+		let customCell = DSFFloatLabelledTextFieldCell()
+		customCell.topOffset = self.placeholderHeight
+
+		customCell.isEditable = true
+		customCell.wraps = false
+		customCell.usesSingleLineMode = true
+		customCell.placeholderString = self.placeholderString
+		customCell.title = self.stringValue
+		customCell.font = self.font
+		customCell.isBordered = self.isBordered
+		customCell.isBezeled = self.isBezeled
+		customCell.bezelStyle = self.bezelStyle
+		customCell.isScrollable = true
+		customCell.isContinuous = self.isContinuous
+		customCell.alignment = self.alignment
+		customCell.formatter = self.formatter
+
+		self.cell = customCell
+
+		return customCell
+	}()
 
 	/// Set the fonts to be used in the control
 	open func setFonts(primary: NSFont, secondary: NSFont) {
@@ -150,28 +169,6 @@ import Cocoa
 		self.addConstraint(x)
 	}
 
-	/// Build the text field's custom cell
-	private func createCustomCell() {
-		let customCell = DSFFloatLabelledTextFieldCell()
-		customCell.topOffset = self.placeholderHeight
-
-		customCell.isEditable = true
-		customCell.wraps = false
-		customCell.usesSingleLineMode = true
-		customCell.placeholderString = self.placeholderString
-		customCell.title = self.stringValue
-		customCell.font = self.font
-		customCell.isBordered = self.isBordered
-		customCell.isBezeled = self.isBezeled
-		customCell.bezelStyle = self.bezelStyle
-		customCell.isScrollable = true
-		customCell.isContinuous = self.isContinuous
-		customCell.alignment = self.alignment
-		customCell.formatter = self.formatter
-
-		self.cell? = customCell
-	}
-
 	private func commonSetup() {
 		self.wantsLayer = true
 		self.translatesAutoresizingMaskIntoConstraints = false
@@ -179,7 +176,6 @@ import Cocoa
 		self.delegate = self
 
 		self.createFloatingLabel()
-		self.createCustomCell()
 
 		self.heightConstraint = NSLayoutConstraint(
 			item: self, attribute: .height,
