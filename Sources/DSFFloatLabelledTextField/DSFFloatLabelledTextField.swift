@@ -3,7 +3,7 @@
 //  DSFFloatLabelledTextControls
 //
 //  Created by Darren Ford on 4/2/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Copyright © 2020 Darren Ford. All rights reserved.
 //
 //	MIT License
 //
@@ -263,11 +263,28 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 // MARK: - Animations
 
 extension DSFFloatLabelledTextField {
+
+	/// Duration of the fade in/out of the secondary label
+	private var animationDuration: TimeInterval {
+		return shouldAnimate() ? 0.4 : 0.0
+	}
+
+	/// Returns true if the system is NOT set to reduce motion (accessibility settings)
+	private func shouldAnimate() -> Bool {
+		if #available(OSX 10.12, *) {
+			return !NSWorkspace.shared.accessibilityDisplayShouldReduceMotion
+		} else {
+			// Fallback on earlier versions. Just animate
+			return true
+		}
+	}
+
 	private func showPlaceholder() {
 		self.isShowing = true
+		let duration = self.animationDuration
 		NSAnimationContext.runAnimationGroup({ context in
 			context.allowsImplicitAnimation = true
-			context.duration = 0.4
+			context.duration = duration
 			self.floatingTop?.constant = 0
 			self.floatingLabel.alphaValue = 1.0
 			self.layoutSubtreeIfNeeded()
@@ -278,9 +295,10 @@ extension DSFFloatLabelledTextField {
 
 	private func hidePlaceholder() {
 		self.isShowing = false
+		let duration = self.animationDuration
 		NSAnimationContext.runAnimationGroup({ context in
 			context.allowsImplicitAnimation = true
-			context.duration = 0.4
+			context.duration = duration
 			self.floatingTop?.constant = self.textHeight / 1.5
 			self.floatingLabel.alphaValue = 0.0
 			self.layoutSubtreeIfNeeded()
