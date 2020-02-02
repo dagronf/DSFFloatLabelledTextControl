@@ -15,6 +15,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DSFFloatLabelledTextControls" customModuleProvider="target">
             <connections>
+                <outlet property="topFloatingLabel" destination="tnz-85-NdV" id="Pyt-zO-up9"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -697,7 +698,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tnz-85-NdV" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="12" y="97" width="433" height="25"/>
+                                    <rect key="frame" x="12" y="97" width="366" height="25"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" title="This is a fusdfjk" placeholderString="Title" id="ETD-Tb-a7N">
                                         <font key="font" metaFont="system" size="18"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -709,8 +710,18 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </textField>
+                                <button toolTip="Check for programattic changing of stringValue" horizontalHuggingPriority="999" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nTi-Ym-3BC">
+                                    <rect key="frame" x="380" y="92" width="75" height="32"/>
+                                    <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pTp-yr-DKx">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="resetPressed:" target="Voe-Tx-rLC" id="keN-c6-1wD"/>
+                                    </connections>
+                                </button>
                                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pyP-dk-pAy">
-                                    <rect key="frame" x="12" y="86" width="433" height="5"/>
+                                    <rect key="frame" x="12" y="86" width="437" height="5"/>
                                 </box>
                                 <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zbB-HI-AVu" userLabel="Price Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
                                     <rect key="frame" x="12" y="55" width="100" height="25"/>
@@ -732,7 +743,7 @@
                                     <rect key="frame" x="117" y="46" width="5" height="43"/>
                                 </box>
                                 <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SAo-aL-Ofe" userLabel="Location Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="128" y="55" width="317" height="25"/>
+                                    <rect key="frame" x="128" y="55" width="321" height="25"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Specific Location (Optional)" id="BHQ-MA-tIJ">
                                         <font key="font" metaFont="system" size="18"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -745,10 +756,10 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="YiQ-45-hxx">
-                                    <rect key="frame" x="12" y="44" width="433" height="5"/>
+                                    <rect key="frame" x="12" y="44" width="437" height="5"/>
                                 </box>
                                 <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="h8z-Ku-xLD" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="12" y="13" width="433" height="25"/>
+                                    <rect key="frame" x="12" y="13" width="437" height="25"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Description" id="XtC-Dr-5RL">
                                         <font key="font" metaFont="system" size="18"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -765,6 +776,7 @@
                                 <constraint firstItem="h8z-Ku-xLD" firstAttribute="trailing" secondItem="YiQ-45-hxx" secondAttribute="trailing" id="0z4-yw-Tjz"/>
                                 <constraint firstAttribute="bottom" secondItem="h8z-Ku-xLD" secondAttribute="bottom" constant="13" id="4yB-Fg-z0j"/>
                                 <constraint firstItem="Mrp-MT-gGa" firstAttribute="top" secondItem="pyP-dk-pAy" secondAttribute="top" id="BXP-Wb-qUk"/>
+                                <constraint firstItem="SAo-aL-Ofe" firstAttribute="trailing" secondItem="nTi-Ym-3BC" secondAttribute="trailing" id="DaR-Ac-xRP"/>
                                 <constraint firstItem="h8z-Ku-xLD" firstAttribute="top" secondItem="YiQ-45-hxx" secondAttribute="bottom" constant="8" id="FfJ-N0-nTx"/>
                                 <constraint firstItem="h8z-Ku-xLD" firstAttribute="top" secondItem="SAo-aL-Ofe" secondAttribute="bottom" constant="17" id="OUL-bd-oAm"/>
                                 <constraint firstItem="tnz-85-NdV" firstAttribute="leading" secondItem="fUJ-lp-O9s" secondAttribute="leading" constant="12" id="PVy-mb-ISo"/>
@@ -772,15 +784,16 @@
                                 <constraint firstItem="Mrp-MT-gGa" firstAttribute="leading" secondItem="zbB-HI-AVu" secondAttribute="trailing" constant="7" id="VVE-Kl-8L1"/>
                                 <constraint firstItem="zbB-HI-AVu" firstAttribute="leading" secondItem="pyP-dk-pAy" secondAttribute="leading" id="Ydy-yG-Syj"/>
                                 <constraint firstItem="h8z-Ku-xLD" firstAttribute="leading" secondItem="YiQ-45-hxx" secondAttribute="leading" id="aC0-1V-wVw"/>
-                                <constraint firstItem="SAo-aL-Ofe" firstAttribute="trailing" secondItem="h8z-Ku-xLD" secondAttribute="trailing" id="aRk-sL-LPA"/>
                                 <constraint firstItem="Mrp-MT-gGa" firstAttribute="bottom" secondItem="YiQ-45-hxx" secondAttribute="bottom" id="cLL-EC-RgF"/>
                                 <constraint firstItem="pyP-dk-pAy" firstAttribute="leading" secondItem="tnz-85-NdV" secondAttribute="leading" id="d1u-4i-5OE"/>
+                                <constraint firstItem="pyP-dk-pAy" firstAttribute="trailing" secondItem="nTi-Ym-3BC" secondAttribute="trailing" id="eCw-zO-M0C"/>
+                                <constraint firstItem="nTi-Ym-3BC" firstAttribute="centerY" secondItem="tnz-85-NdV" secondAttribute="centerY" id="eVZ-GL-PaS"/>
                                 <constraint firstItem="YiQ-45-hxx" firstAttribute="leading" secondItem="pyP-dk-pAy" secondAttribute="leading" id="eeL-GP-OSM"/>
                                 <constraint firstItem="pyP-dk-pAy" firstAttribute="top" secondItem="tnz-85-NdV" secondAttribute="bottom" constant="8" id="mw3-F6-FcM"/>
-                                <constraint firstAttribute="trailing" secondItem="tnz-85-NdV" secondAttribute="trailing" constant="12" id="nvx-mq-7Rr"/>
-                                <constraint firstItem="pyP-dk-pAy" firstAttribute="trailing" secondItem="tnz-85-NdV" secondAttribute="trailing" id="tts-Oa-u7a"/>
+                                <constraint firstItem="nTi-Ym-3BC" firstAttribute="leading" secondItem="tnz-85-NdV" secondAttribute="trailing" constant="8" id="tqU-Lv-uve"/>
                                 <constraint firstItem="SAo-aL-Ofe" firstAttribute="leading" secondItem="Mrp-MT-gGa" secondAttribute="trailing" constant="8" id="uil-nb-XGc"/>
                                 <constraint firstItem="SAo-aL-Ofe" firstAttribute="centerY" secondItem="zbB-HI-AVu" secondAttribute="centerY" id="w3D-xV-SUh"/>
+                                <constraint firstAttribute="trailing" secondItem="nTi-Ym-3BC" secondAttribute="trailing" constant="8" id="xhA-vV-JjX"/>
                                 <constraint firstItem="zbB-HI-AVu" firstAttribute="top" secondItem="pyP-dk-pAy" secondAttribute="bottom" constant="8" id="zGg-pG-DlK"/>
                                 <constraint firstItem="tnz-85-NdV" firstAttribute="top" secondItem="fUJ-lp-O9s" secondAttribute="top" constant="12" id="zQh-X5-zRr"/>
                             </constraints>

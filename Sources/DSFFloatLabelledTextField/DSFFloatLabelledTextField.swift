@@ -35,6 +35,28 @@ import Cocoa
 		}
 	}
 
+	// Override so that we can notify when the developer changes the text programatically too
+	open override var stringValue: String {
+		get {
+			return super.stringValue
+		}
+		set {
+			super.stringValue = newValue
+			NotificationCenter.default.post(name: NSControl.textDidChangeNotification, object: self)
+		}
+	}
+
+	// Override so that we can update when the developer changes the placeholder string
+	open override var placeholderString: String? {
+		get {
+			return super.placeholderString
+		}
+		set {
+			super.placeholderString = newValue
+			self.floatingLabel.stringValue = newValue ?? ""
+		}
+	}
+
 	/// Floating label
 	private let floatingLabel = NSTextField()
 

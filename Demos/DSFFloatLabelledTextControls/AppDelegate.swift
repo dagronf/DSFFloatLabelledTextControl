@@ -33,6 +33,7 @@ import DSFFloatLabelledTextField
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 	@IBOutlet weak var window: NSWindow!
+	@IBOutlet weak var topFloatingLabel: DSFFloatLabelledTextField!
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
@@ -63,6 +64,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 									toItem: cv, attribute: .bottom,
 									multiplier: 1, constant: -20)
 		cv.addConstraint(x2)
+	}
+	@IBAction func resetPressed(_ sender: Any) {
+		// Verify that when we programatically change the string value the control updates accordingly
+		self.topFloatingLabel.stringValue = "Reset the content"
+		self.topFloatingLabel.placeholderString = "Updated placeholder string"
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {
