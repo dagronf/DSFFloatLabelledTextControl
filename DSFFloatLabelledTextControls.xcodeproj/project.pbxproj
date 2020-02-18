@@ -16,6 +16,12 @@
 		23A2B7ED220792FE00B2FC77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A2B7EC220792FE00B2FC77 /* AppDelegate.swift */; };
 		23A2B7EF220792FF00B2FC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A2B7EE220792FF00B2FC77 /* Assets.xcassets */; };
 		23A2B7F2220792FF00B2FC77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A2B7F0220792FF00B2FC77 /* MainMenu.xib */; };
+		23C3AB9E23FBCFA30079D9C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C3AB9D23FBCFA30079D9C3 /* AppDelegate.m */; };
+		23C3ABA023FBCFA40079D9C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23C3AB9F23FBCFA40079D9C3 /* Assets.xcassets */; };
+		23C3ABA323FBCFA40079D9C3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23C3ABA123FBCFA40079D9C3 /* MainMenu.xib */; };
+		23C3ABA623FBCFA40079D9C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C3ABA523FBCFA40079D9C3 /* main.m */; };
+		23C3ABAC23FBCFDE0079D9C3 /* DSFFloatLabelledTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2351F84B2207D15C00EFA4F7 /* DSFFloatLabelledTextField.framework */; };
+		23C3ABB023FBD0F80079D9C3 /* DSFFloatLabelledTextField.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2351F84B2207D15C00EFA4F7 /* DSFFloatLabelledTextField.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +31,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2351F84A2207D15C00EFA4F7;
 			remoteInfo = DSFFloatLabelledTextControl;
+		};
+		23C3ABAD23FBCFE40079D9C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23A2B7E1220792FE00B2FC77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2351F84A2207D15C00EFA4F7;
+			remoteInfo = DSFFloatLabelledTextField;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -38,6 +51,16 @@
 				2351F8532207D15C00EFA4F7 /* DSFFloatLabelledTextField.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23C3ABAF23FBD0E30079D9C3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				23C3ABB023FBD0F80079D9C3 /* DSFFloatLabelledTextField.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -56,6 +79,14 @@
 		23A2B7F4220792FF00B2FC77 /* DSFFloatLabelledTextControls.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFFloatLabelledTextControls.entitlements; sourceTree = "<group>"; };
 		23A2B7FA2207931500B2FC77 /* DSFFloatLabelledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFFloatLabelledTextField.swift; sourceTree = "<group>"; };
 		23ACF96D228A3F6600FF6594 /* DSFFloatLabelledTextControl.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = DSFFloatLabelledTextControl.podspec; sourceTree = "<group>"; };
+		23C3AB9A23FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DSFFloatLabelledTextControls Demo objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23C3AB9C23FBCFA30079D9C3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		23C3AB9D23FBCFA30079D9C3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		23C3AB9F23FBCFA40079D9C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23C3ABA223FBCFA40079D9C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		23C3ABA423FBCFA40079D9C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23C3ABA523FBCFA40079D9C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		23C3ABA723FBCFA40079D9C3 /* DSFFloatLabelledTextControls_Demo_objc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFFloatLabelledTextControls_Demo_objc.entitlements; sourceTree = "<group>"; };
 		23FFF1CD23BD490F008FA55A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +103,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2351F8522207D15C00EFA4F7 /* DSFFloatLabelledTextField.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23C3AB9723FBCFA30079D9C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23C3ABAC23FBCFDE0079D9C3 /* DSFFloatLabelledTextField.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +137,7 @@
 				2351F85A22082AD800EFA4F7 /* README.md */,
 				23FFF1CD23BD490F008FA55A /* Package.swift */,
 				23A2B7EA220792FE00B2FC77 /* Products */,
+				23C3ABAB23FBCFDE0079D9C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +146,7 @@
 			children = (
 				23A2B7E9220792FE00B2FC77 /* DSFFloatLabelledTextControls.app */,
 				2351F84B2207D15C00EFA4F7 /* DSFFloatLabelledTextField.framework */,
+				23C3AB9A23FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +163,27 @@
 			path = DSFFloatLabelledTextControls;
 			sourceTree = "<group>";
 		};
+		23C3AB9B23FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc */ = {
+			isa = PBXGroup;
+			children = (
+				23C3AB9C23FBCFA30079D9C3 /* AppDelegate.h */,
+				23C3AB9D23FBCFA30079D9C3 /* AppDelegate.m */,
+				23C3AB9F23FBCFA40079D9C3 /* Assets.xcassets */,
+				23C3ABA123FBCFA40079D9C3 /* MainMenu.xib */,
+				23C3ABA423FBCFA40079D9C3 /* Info.plist */,
+				23C3ABA523FBCFA40079D9C3 /* main.m */,
+				23C3ABA723FBCFA40079D9C3 /* DSFFloatLabelledTextControls_Demo_objc.entitlements */,
+			);
+			path = "DSFFloatLabelledTextControls Demo objc";
+			sourceTree = "<group>";
+		};
+		23C3ABAB23FBCFDE0079D9C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		23FFF1CE23BD496A008FA55A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				23A2B7EB220792FE00B2FC77 /* DSFFloatLabelledTextControls */,
+				23C3AB9B23FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc */,
 			);
 			path = Demos;
 			sourceTree = "<group>";
@@ -189,6 +252,25 @@
 			productReference = 23A2B7E9220792FE00B2FC77 /* DSFFloatLabelledTextControls.app */;
 			productType = "com.apple.product-type.application";
 		};
+		23C3AB9923FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23C3ABAA23FBCFA40079D9C3 /* Build configuration list for PBXNativeTarget "DSFFloatLabelledTextControls Demo objc" */;
+			buildPhases = (
+				23C3AB9623FBCFA30079D9C3 /* Sources */,
+				23C3AB9723FBCFA30079D9C3 /* Frameworks */,
+				23C3AB9823FBCFA30079D9C3 /* Resources */,
+				23C3ABAF23FBD0E30079D9C3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23C3ABAE23FBCFE40079D9C3 /* PBXTargetDependency */,
+			);
+			name = "DSFFloatLabelledTextControls Demo objc";
+			productName = "DSFFloatLabelledTextControls Demo objc";
+			productReference = 23C3AB9A23FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -205,6 +287,9 @@
 					23A2B7E8220792FE00B2FC77 = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					23C3AB9923FBCFA30079D9C3 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 23A2B7E4220792FE00B2FC77 /* Build configuration list for PBXProject "DSFFloatLabelledTextControls" */;
@@ -220,8 +305,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				23A2B7E8220792FE00B2FC77 /* DSFFloatLabelledTextControls */,
 				2351F84A2207D15C00EFA4F7 /* DSFFloatLabelledTextField */,
+				23A2B7E8220792FE00B2FC77 /* DSFFloatLabelledTextControls */,
+				23C3AB9923FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc */,
 			);
 		};
 /* End PBXProject section */
@@ -245,6 +331,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23C3AB9823FBCFA30079D9C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23C3ABA023FBCFA40079D9C3 /* Assets.xcassets in Resources */,
+				23C3ABA323FBCFA40079D9C3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -264,6 +359,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23C3AB9623FBCFA30079D9C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23C3ABA623FBCFA40079D9C3 /* main.m in Sources */,
+				23C3AB9E23FBCFA30079D9C3 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -271,6 +375,11 @@
 			isa = PBXTargetDependency;
 			target = 2351F84A2207D15C00EFA4F7 /* DSFFloatLabelledTextField */;
 			targetProxy = 2351F8502207D15C00EFA4F7 /* PBXContainerItemProxy */;
+		};
+		23C3ABAE23FBCFE40079D9C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2351F84A2207D15C00EFA4F7 /* DSFFloatLabelledTextField */;
+			targetProxy = 23C3ABAD23FBCFE40079D9C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -283,18 +392,26 @@
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
+		23C3ABA123FBCFA40079D9C3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23C3ABA223FBCFA40079D9C3 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2351F8552207D15C00EFA4F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -319,12 +436,12 @@
 		2351F8562207D15C00EFA4F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -466,7 +583,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DSFFloatLabelledTextControls/DSFFloatLabelledTextControls.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Demos/DSFFloatLabelledTextControls/DSFFloatLabelledTextControls.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -489,7 +606,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = DSFFloatLabelledTextControls/DSFFloatLabelledTextControls.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Demos/DSFFloatLabelledTextControls/DSFFloatLabelledTextControls.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -504,6 +621,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		23C3ABA823FBCFA40079D9C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Demos/DSFFloatLabelledTextControls Demo objc/DSFFloatLabelledTextControls_Demo_objc.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Demos/DSFFloatLabelledTextControls Demo objc/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFFloatLabelledTextControls-Demo-objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		23C3ABA923FBCFA40079D9C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Demos/DSFFloatLabelledTextControls Demo objc/DSFFloatLabelledTextControls_Demo_objc.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Demos/DSFFloatLabelledTextControls Demo objc/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.darrenford.DSFFloatLabelledTextControls-Demo-objc";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -533,6 +692,15 @@
 			buildConfigurations = (
 				23A2B7F8220792FF00B2FC77 /* Debug */,
 				23A2B7F9220792FF00B2FC77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23C3ABAA23FBCFA40079D9C3 /* Build configuration list for PBXNativeTarget "DSFFloatLabelledTextControls Demo objc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23C3ABA823FBCFA40079D9C3 /* Debug */,
+				23C3ABA923FBCFA40079D9C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
