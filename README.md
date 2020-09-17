@@ -1,6 +1,6 @@
 # macOS Float Label Pattern Text Field
 
-A macOS Cocoa single-line NSTextField that implements the Float Label Pattern.  You can read about the float pattern [here](http://mds.is/float-label-pattern/)
+A macOS Cocoa single-line NSTextField that implements the Float Label Pattern.  You can read about the float pattern [here](http://mds.is/float-label-pattern/). Usable in Swift and Objective-C projects.
 
 ![](https://img.shields.io/github/v/tag/dagronf/DSFFloatLabelledTextControl) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
@@ -11,16 +11,22 @@ A macOS Cocoa single-line NSTextField that implements the Float Label Pattern.  
 
 ## Why?
 
-I was curious as to whether this pattern would work for a Mac program.
+I was curious as to whether this pattern would work for a Mac program.  I wanted this to be a basic drop-in for an existing text field, using the NSTextField `placeholderString` value as the floating label title.
 
-## Usage
+## Installation
 
-### Directly
-Copy the `DSFFloatLabelledTextField.swift` into your project.  This class inherits directly from `NSTextField` so all settings that you make on a text field (eg. alignment) should also apply here.
+### Swift Package Manager
+
+Add `https://github.com/dagronf/DSFFloatLabelledTextControl` to your project.
 
 ### Cocoapods
 
 Add `pod 'DSFFloatLabelledTextControl', :git => 'https://github.com/dagronf/DSFFloatLabelledTextControl'` to your podfile.
+
+### Directly
+Copy the `DSFFloatLabelledTextField.swift` into your project.  This class inherits directly from `NSTextField` so all settings that you make on a text field (eg. alignment) should also apply here.
+
+## Usage
 
 ### Interface builder
 
@@ -30,25 +36,22 @@ Add `pod 'DSFFloatLabelledTextControl', :git => 'https://github.com/dagronf/DSFF
 
 ### Dynamically
 
-```
-{
-	let field = DSFFloatLabelledTextField()
-	field.placeholderString = "Dynamic Created"
-	field.font = NSFont.systemFont(ofSize: 16)
-	parentView.addSubview(field)
+```swift
+let field = DSFFloatLabelledTextField()
+field.placeholderString = "Dynamic Created"
+field.font = NSFont.systemFont(ofSize: 16)
+parentView.addSubview(field)
 		
-	/// Setup autolayout constraints
-}
-
-func changeFonts()
-{
-	self.floatingLabel!.setFonts(
-		primary: NSFont.systemFont(ofSize: 16),
-		secondary: NSFont.systemFont(ofSize: 10)
-	)
-}
-
+/// Setup autolayout constraints etc.
 ```
+
+## Custom Properties
+
+This control inherits from `NSTextField`, so all `NSTextField` functionalities (like cocoa binding and Interface Builder settings) are available.  If you can use an NSTextField, you can use this control.
+
+`placeholderTextSize` - the size of the text used in the floating label (in pt)
+
+`placeholderSpacing` - the distance between the text field text and the floating label (in px)
 
 ## Credits
 

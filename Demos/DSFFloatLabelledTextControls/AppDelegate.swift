@@ -39,6 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		// Insert code here to initialize your application
 
 		let ft = DSFFloatLabelledTextField()
+		ft.alignment = .natural
 		ft.placeholderString = "Dynamic Created"
 		ft.font = NSFont.systemFont(ofSize: 16)
 
