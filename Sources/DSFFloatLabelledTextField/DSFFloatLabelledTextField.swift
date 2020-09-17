@@ -28,7 +28,17 @@
 import Cocoa
 
 @IBDesignable open class DSFFloatLabelledTextField: NSTextField {
-	@IBInspectable public var placeholderTextSize: CGFloat = 10 {
+
+	/// The size (in pt) of the floating label text
+	@IBInspectable public var placeholderTextSize: CGFloat = NSFont.smallSystemFontSize {
+		didSet {
+			self.floatingLabel.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
+			self.reconfigureControl()
+		}
+	}
+
+	/// Spacing between the floating label and the text field text
+	@IBInspectable public var placeholderSpacing: CGFloat = 0.0 {
 		didSet {
 			self.floatingLabel.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
 			self.reconfigureControl()
@@ -87,7 +97,7 @@ import Cocoa
 
 	/// Returns the total height of the control given the font settings
 	private var controlHeight: CGFloat {
-		return self.textHeight + self.placeholderHeight
+		return self.textHeight + self.placeholderSpacing + self.placeholderHeight
 	}
 
 	/// Returns of the color for the floating text
@@ -98,6 +108,12 @@ import Cocoa
 		else {
 			return NSColor.headerTextColor
 		}
+	}
+
+	open override var intrinsicContentSize: NSSize {
+		var sz = super.intrinsicContentSize
+		sz.height = self.controlHeight
+		return sz
 	}
 
 	/// Return the custom cell type
@@ -130,17 +146,36 @@ import Cocoa
 		self.font = primary
 	}
 
+	public override init(frame frameRect: NSRect) {
+		super.init(frame: frameRect)
+		self.setup()
+	}
+
+	required public init?(coder: NSCoder) {
+		super.init(coder: coder)
+		self.setup()
+	}
+
 	open override func viewDidMoveToWindow() {
-		// Setup the control
+		super.viewDidMoveToWindow()
+
+		// When we're added to the view, make sure that the floating label alignment matches us
+		// (as the user might have changed the alignment BEFORE adding to the superview
+		self.floatingLabel.alignment = self.alignment
+	}
+
+	private func setup() {
+		// Setup the common elements of the control
 		self.commonSetup()
 
 		// Listen to changes in the primary font so we can reconfigure to match
-		self.fontObserver = self.observe(\.font, options: [.new]) { _, _ in
-			self.reconfigureControl()
+		self.fontObserver = self.observe(\.font, options: [.new]) { [weak self] _, _ in
+			self?.reconfigureControl()
 		}
 
 		// Listen to changes in the placeholder text so we can reflect it in the floater
-		self.placeholderObserver = self.observe(\.placeholderString, options: [.new]) { _, _ in
+		self.placeholderObserver = self.observe(\.placeholderString, options: [.new]) { [weak self] _, _ in
+			guard let `self` = self else { return }
 			self.floatingLabel.stringValue = self.placeholderString!
 			self.reconfigureControl()
 		}
@@ -197,6 +232,9 @@ import Cocoa
 		self.usesSingleLineMode = true
 		self.delegate = self
 
+		// Default to natural layout
+		self.alignment = .natural
+
 		self.createFloatingLabel()
 
 		self.heightConstraint = NSLayoutConstraint(
@@ -209,7 +247,7 @@ import Cocoa
 
 		// If the field already has text, make sure the placeholder is shown
 		if self.stringValue.count > 0 {
-			self.showPlaceholder()
+			self.showPlaceholder(animated: false)
 		}
 	}
 
@@ -219,7 +257,7 @@ import Cocoa
 			/// If we are currently editing, then finish before changing.
 			self.window?.endEditing(for: nil)
 		}
-		self.fieldCell.topOffset = self.placeholderHeight
+		self.fieldCell.topOffset = self.placeholderHeight + self.placeholderSpacing
 
 		self.expandFrame()
 		self.needsLayout = true
@@ -228,20 +266,31 @@ import Cocoa
 	/// Rebuild the frame of the text field to match the new settings
 	private func expandFrame() {
 		self.heightConstraint?.constant = self.controlHeight
-		self.fieldCell.topOffset = self.placeholderHeight
+		self.fieldCell.topOffset = self.placeholderHeight + self.placeholderSpacing
 	}
 }
 
 // MARK: - Focus and editing
 
 extension DSFFloatLabelledTextField: NSTextFieldDelegate {
+
+	// Change the floating label color to represent active state
+	private func setFloatingLabelActive(_ active: Bool) {
+		if active {
+			self.floatingLabel.textColor = self.floatTextColor
+		}
+		else {
+			self.floatingLabel.textColor = NSColor.placeholderTextColor
+		}
+	}
+
 	public func controlTextDidChange(_ obj: Notification) {
 		guard let field = obj.object as? NSTextField else {
 			return
 		}
 
 		if field.stringValue.count > 0, !self.isShowing {
-			self.showPlaceholder()
+			self.showPlaceholder(animated: true)
 		}
 		else if field.stringValue.count == 0, self.isShowing {
 			self.hidePlaceholder()
@@ -257,15 +306,17 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 			// 'becomeFirstResponder'.  I've read that this is related to the text field automatically selecting
 			// text when taking focus, but I haven't been able to verify this in any useful manner.
 			DispatchQueue.main.async { [weak self] in
-				self?.floatingLabel.textColor = self?.floatTextColor
+				if let `self` = self {
+					self.setFloatingLabelActive(true)
+				}
 			}
 		}
 		return becomeResult
 	}
 
 	open func controlTextDidEndEditing(_: Notification) {
-		// When we lose focus, set the label color back to secondary color
-		self.floatingLabel.textColor = NSColor.secondaryLabelColor
+		// When we lose focus, set the label color back to the placeholder color
+		self.setFloatingLabelActive(false)
 	}
 
 	/// Does our text field currently have input focus?
@@ -301,24 +352,32 @@ extension DSFFloatLabelledTextField {
 		}
 	}
 
-	private func showPlaceholder() {
+	private func showPlaceholder(animated: Bool) {
 		self.isShowing = true
-		let duration = self.animationDuration
-		NSAnimationContext.runAnimationGroup({ context in
-			context.allowsImplicitAnimation = true
-			context.duration = duration
+		if animated {
+			NSAnimationContext.runAnimationGroup({ [weak self] context in
+				guard let `self` = self else { return }
+				context.allowsImplicitAnimation = true
+				context.duration = self.animationDuration
+				self.floatingTop?.constant = 0
+				self.floatingLabel.alphaValue = 1.0
+				self.layoutSubtreeIfNeeded()
+			}, completionHandler: {
+				//
+			})
+		}
+		else {
+			self.setFloatingLabelActive(false)
 			self.floatingTop?.constant = 0
 			self.floatingLabel.alphaValue = 1.0
-			self.layoutSubtreeIfNeeded()
-		}, completionHandler: {
-			//
-		})
+		}
 	}
 
 	private func hidePlaceholder() {
 		self.isShowing = false
 		let duration = self.animationDuration
-		NSAnimationContext.runAnimationGroup({ context in
+		NSAnimationContext.runAnimationGroup({ [weak self] context in
+			guard let `self` = self else { return }
 			context.allowsImplicitAnimation = true
 			context.duration = duration
 			self.floatingTop?.constant = self.textHeight / 1.5
