@@ -27,7 +27,19 @@
 
 import Cocoa
 
+/// DSFFloatLabelledTextField delegate protocol
+@objc public protocol DSFFloatLabelledTextFieldDelegate: NSObjectProtocol {
+	/// Called when the label is shown or hidden
+	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didShowFloatingLabel didShow: Bool)
+	/// Called when the field becomes or loses first responder status
+	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didFocus: Bool)
+}
+
+/// An NSTextField that implements the Float Label Pattern
 @IBDesignable open class DSFFloatLabelledTextField: NSTextField {
+
+	/// Optional delegate to provide callbacks for the floating label state
+	@objc public weak var floatLabelDelegate: DSFFloatLabelledTextFieldDelegate?
 
 	/// The size (in pt) of the floating label text
 	@IBInspectable public var placeholderTextSize: CGFloat = NSFont.smallSystemFontSize {
@@ -71,7 +83,11 @@ import Cocoa
 	private let floatingLabel = NSTextField()
 
 	/// Is the label currently showing
-	private var isShowing: Bool = false
+	private var isShowing: Bool = false {
+		didSet {
+			self.floatLabelDelegate?.floatLabelledTextField?(self, didShowFloatingLabel: self.isShowing)
+		}
+	}
 
 	/// Constraint to tie the label to the top of the control
 	private var floatingTop: NSLayoutConstraint?
@@ -282,6 +298,8 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 		else {
 			self.floatingLabel.textColor = NSColor.placeholderTextColor
 		}
+
+		self.floatLabelDelegate?.floatLabelledTextField?(self, didFocus: active)
 	}
 
 	public func controlTextDidChange(_ obj: Notification) {
@@ -417,4 +435,3 @@ private class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
 		super.drawInterior(withFrame: insetRect, in: controlView)
 	}
 }
-

@@ -65,6 +65,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 									toItem: cv, attribute: .bottom,
 									multiplier: 1, constant: -20)
 		cv.addConstraint(x2)
+
+
+		// Check the delegate
+		self.topFloatingLabel.floatLabelDelegate = self
+
 	}
 	@IBAction func resetPressed(_ sender: Any) {
 		// Verify that when we programatically change the string value the control updates accordingly
@@ -77,4 +82,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 
 
+}
+
+extension AppDelegate: DSFFloatLabelledTextFieldDelegate {
+	func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didShowFloatingLabel didShow: Bool) {
+		Swift.print("Top level is \(didShow)")
+	}
+
+	func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didFocus: Bool) {
+		Swift.print("Top level focus is now \(didFocus)")
+	}
 }
