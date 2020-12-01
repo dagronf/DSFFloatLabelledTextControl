@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17154" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -686,20 +686,20 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="497" height="441"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="497" height="461"/>
+                <rect key="frame" x="0.0" y="0.0" width="497" height="491"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <box boxType="secondary" title="Purchase Form" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-8U-z2F">
-                        <rect key="frame" x="17" y="303" width="463" height="140"/>
+                        <rect key="frame" x="17" y="333" width="463" height="140"/>
                         <view key="contentView" id="fUJ-lp-O9s">
                             <rect key="frame" x="3" y="3" width="457" height="134"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tnz-85-NdV" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="12" y="97" width="366" height="25"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" title="This is a fusdfjk" placeholderString="Title" id="ETD-Tb-a7N">
+                                    <rect key="frame" x="12" y="97" width="374" height="25"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" title="Groovy Software v1" placeholderString="Title" id="ETD-Tb-a7N">
                                         <font key="font" metaFont="system" size="18"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -711,7 +711,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </textField>
                                 <button toolTip="Check for programattic changing of stringValue" horizontalHuggingPriority="999" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nTi-Ym-3BC">
-                                    <rect key="frame" x="380" y="92" width="75" height="32"/>
+                                    <rect key="frame" x="387" y="93" width="69" height="32"/>
                                     <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pTp-yr-DKx">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -800,10 +800,10 @@
                         </view>
                     </box>
                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="CVr-p8-VOx">
-                        <rect key="frame" x="20" y="273" width="457" height="5"/>
+                        <rect key="frame" x="20" y="303" width="457" height="5"/>
                     </box>
                     <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waN-7O-qLn">
-                        <rect key="frame" x="20" y="212" width="457" height="33"/>
+                        <rect key="frame" x="20" y="242" width="457" height="33"/>
                         <subviews>
                             <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="oU9-jl-8Ow" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
@@ -848,13 +848,13 @@
                         </customSpacing>
                     </stackView>
                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="QuB-jf-wmu">
-                        <rect key="frame" x="20" y="176" width="457" height="5"/>
+                        <rect key="frame" x="20" y="206" width="457" height="5"/>
                     </box>
                     <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBs-1o-JjM">
-                        <rect key="frame" x="20" y="80" width="250" height="82"/>
+                        <rect key="frame" x="20" y="80" width="250" height="112"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3hp-BV-Ls3" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                <rect key="frame" x="0.0" y="60" width="250" height="22"/>
+                                <rect key="frame" x="0.0" y="90" width="250" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Billy Snedden" placeholderString="Licensee Name" drawsBackground="YES" id="I01-Tl-E8r">
                                     <font key="font" metaFont="system" size="14"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -867,6 +867,23 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VLP-0u-Kf3" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
+                                <rect key="frame" x="0.0" y="60" width="250" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="caterpillar" placeholderString="Password" drawsBackground="YES" id="2oD-a4-pQh">
+                                    <font key="font" metaFont="system" size="14"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSecure" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-T7-eym" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
@@ -903,20 +920,24 @@
                             </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="VLP-0u-Kf3" firstAttribute="leading" secondItem="3hp-BV-Ls3" secondAttribute="leading" id="1tz-ab-IsB"/>
                             <constraint firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="Cxv-bf-SFN"/>
                             <constraint firstItem="ueu-5M-hVI" firstAttribute="leading" secondItem="3hp-BV-Ls3" secondAttribute="leading" id="HGs-7T-sEb"/>
                             <constraint firstAttribute="width" constant="250" id="SfX-Wt-05r"/>
                             <constraint firstItem="MfQ-T7-eym" firstAttribute="leading" secondItem="3hp-BV-Ls3" secondAttribute="leading" id="Xpi-7I-DrD"/>
                             <constraint firstItem="MfQ-T7-eym" firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="YEC-So-F7G"/>
                             <constraint firstItem="ueu-5M-hVI" firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="gq8-B3-sya"/>
+                            <constraint firstItem="VLP-0u-Kf3" firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="lxu-7C-U86"/>
                             <constraint firstItem="3hp-BV-Ls3" firstAttribute="leading" secondItem="CBs-1o-JjM" secondAttribute="leading" id="w8m-Ox-vCH"/>
                         </constraints>
                         <visibilityPriorities>
                             <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
+                            <integer value="1000"/>
                         </visibilityPriorities>
                         <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
@@ -943,7 +964,7 @@
                     <constraint firstItem="pnz-8U-z2F" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="zgF-Fx-OjE"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-163.5" y="191.5"/>
+            <point key="canvasLocation" x="-480" y="220"/>
         </window>
     </objects>
 </document>

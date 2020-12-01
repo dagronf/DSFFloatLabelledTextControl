@@ -57,6 +57,13 @@ import Cocoa
 		}
 	}
 
+	/// Spacing between the floating label and the text field text
+	@IBInspectable public var isSecure: Bool = false {
+		didSet {
+			self.configureCell(isSecure: self.isSecure)
+		}
+	}
+
 	// Override so that we can notify when the developer changes the text programatically too
 	open override var stringValue: String {
 		get {
@@ -132,11 +139,8 @@ import Cocoa
 		return sz
 	}
 
-	/// Return the custom cell type
-	fileprivate lazy var fieldCell: DSFFloatLabelledTextFieldCell = {
-		let customCell = DSFFloatLabelledTextFieldCell()
-		customCell.topOffset = self.placeholderHeight
-
+	func configureCell(isSecure: Bool = false) {
+		let customCell: NSTextFieldCell = isSecure ? DSFFloatLabelledSecureTextFieldCell() : DSFFloatLabelledTextFieldCell()
 		customCell.isEditable = true
 		customCell.wraps = false
 		customCell.usesSingleLineMode = true
@@ -151,10 +155,19 @@ import Cocoa
 		customCell.alignment = self.alignment
 		customCell.formatter = self.formatter
 
-		self.cell = customCell
+		if var s = customCell as? DSFFloatLabelledTextFieldCellProtocol {
+			s.topOffset = self.placeholderHeight
+		}
 
-		return customCell
-	}()
+		self.cell = customCell
+	}
+
+	func setTopOffset(_ value: CGFloat) {
+		guard var f = self.cell as? DSFFloatLabelledTextFieldCellProtocol else {
+			return
+		}
+		f.topOffset = value
+	}
 
 	/// Set the fonts to be used in the control
 	open func setFonts(primary: NSFont, secondary: NSFont) {
@@ -183,6 +196,9 @@ import Cocoa
 	private func setup() {
 		// Setup the common elements of the control
 		self.commonSetup()
+
+		// Configure a default text cell
+		self.configureCell(isSecure: false)
 
 		// Listen to changes in the primary font so we can reconfigure to match
 		self.fontObserver = self.observe(\.font, options: [.new]) { [weak self] _, _ in
@@ -240,6 +256,9 @@ import Cocoa
 			multiplier: 1.0, constant: self.isBezeled ? -4 : 0
 		)
 		self.addConstraint(x)
+
+		self.floatingLabel.setContentHuggingPriority(NSLayoutConstraint.Priority(10), for: .horizontal)
+		self.floatingLabel.setContentCompressionResistancePriority(NSLayoutConstraint.Priority(10), for: .horizontal)
 	}
 
 	private func commonSetup() {
@@ -273,17 +292,23 @@ import Cocoa
 			/// If we are currently editing, then finish before changing.
 			self.window?.endEditing(for: nil)
 		}
-		self.fieldCell.topOffset = self.placeholderHeight + self.placeholderSpacing
-
 		self.expandFrame()
-		self.needsLayout = true
 	}
 
 	/// Rebuild the frame of the text field to match the new settings
 	private func expandFrame() {
 		self.heightConstraint?.constant = self.controlHeight
-		self.fieldCell.topOffset = self.placeholderHeight + self.placeholderSpacing
+		self.setTopOffset(self.placeholderHeight + self.placeholderSpacing)
+		self.needsLayout = true
 	}
+
+	open override func layout() {
+		super.layout()
+
+		self.setTopOffset(self.placeholderHeight + self.placeholderSpacing)
+		self.needsLayout = true
+	}
+
 }
 
 // MARK: - Focus and editing
@@ -409,7 +434,38 @@ extension DSFFloatLabelledTextField {
 
 // MARK: - Cell definition
 
-private class DSFFloatLabelledTextFieldCell: NSTextFieldCell {
+protocol DSFFloatLabelledTextFieldCellProtocol {
+	var topOffset: CGFloat { get set }
+}
+
+private class DSFFloatLabelledTextFieldCell: NSTextFieldCell, DSFFloatLabelledTextFieldCellProtocol {
+	var topOffset: CGFloat = 0
+
+	private func offset() -> CGFloat {
+		return self.topOffset - (self.isBezeled ? 5 : 1)
+	}
+
+	override func titleRect(forBounds rect: NSRect) -> NSRect {
+		return NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
+	}
+
+	override func edit(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, event: NSEvent?) {
+		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
+		super.edit(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, event: event)
+	}
+
+	override func select(withFrame rect: NSRect, in controlView: NSView, editor textObj: NSText, delegate: Any?, start selStart: Int, length selLength: Int) {
+		let insetRect = NSRect(x: rect.origin.x, y: rect.origin.y + self.offset(), width: rect.width, height: rect.height)
+		super.select(withFrame: insetRect, in: controlView, editor: textObj, delegate: delegate, start: selStart, length: selLength)
+	}
+
+	override func drawInterior(withFrame cellFrame: NSRect, in controlView: NSView) {
+		let insetRect = NSRect(x: cellFrame.origin.x, y: cellFrame.origin.y + self.offset(), width: cellFrame.width, height: cellFrame.height)
+		super.drawInterior(withFrame: insetRect, in: controlView)
+	}
+}
+
+private class DSFFloatLabelledSecureTextFieldCell: NSSecureTextFieldCell, DSFFloatLabelledTextFieldCellProtocol {
 	var topOffset: CGFloat = 0
 
 	private func offset() -> CGFloat {

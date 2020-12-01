@@ -6,6 +6,21 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		23E825612575D1760023A3C7 /* All */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 23E825642575D1760023A3C7 /* Build configuration list for PBXAggregateTarget "All" */;
+			buildPhases = (
+			);
+			dependencies = (
+				23E825682575D17E0023A3C7 /* PBXTargetDependency */,
+				23E8256A2575D17E0023A3C7 /* PBXTargetDependency */,
+			);
+			name = All;
+			productName = All;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		2351F84F2207D15C00EFA4F7 /* DSFFloatLabelledTextControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 2351F84D2207D15C00EFA4F7 /* DSFFloatLabelledTextControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2351F8522207D15C00EFA4F7 /* DSFFloatLabelledTextField.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2351F84B2207D15C00EFA4F7 /* DSFFloatLabelledTextField.framework */; };
@@ -38,6 +53,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2351F84A2207D15C00EFA4F7;
 			remoteInfo = DSFFloatLabelledTextField;
+		};
+		23E825672575D17E0023A3C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23A2B7E1220792FE00B2FC77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23A2B7E8220792FE00B2FC77;
+			remoteInfo = DSFFloatLabelledTextControls;
+		};
+		23E825692575D17E0023A3C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 23A2B7E1220792FE00B2FC77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 23C3AB9923FBCFA30079D9C3;
+			remoteInfo = "DSFFloatLabelledTextControls Demo objc";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -87,6 +116,7 @@
 		23C3ABA423FBCFA40079D9C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		23C3ABA523FBCFA40079D9C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		23C3ABA723FBCFA40079D9C3 /* DSFFloatLabelledTextControls_Demo_objc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DSFFloatLabelledTextControls_Demo_objc.entitlements; sourceTree = "<group>"; };
+		23E8256D2575D28A0023A3C7 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		23FFF1CD23BD490F008FA55A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -290,6 +320,9 @@
 					23C3AB9923FBCFA30079D9C3 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
+					23E825612575D1760023A3C7 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 				};
 			};
 			buildConfigurationList = 23A2B7E4220792FE00B2FC77 /* Build configuration list for PBXProject "DSFFloatLabelledTextControls" */;
@@ -299,6 +332,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 23A2B7E0220792FE00B2FC77;
 			productRefGroup = 23A2B7EA220792FE00B2FC77 /* Products */;
@@ -308,6 +342,7 @@
 				2351F84A2207D15C00EFA4F7 /* DSFFloatLabelledTextField */,
 				23A2B7E8220792FE00B2FC77 /* DSFFloatLabelledTextControls */,
 				23C3AB9923FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc */,
+				23E825612575D1760023A3C7 /* All */,
 			);
 		};
 /* End PBXProject section */
@@ -381,6 +416,16 @@
 			target = 2351F84A2207D15C00EFA4F7 /* DSFFloatLabelledTextField */;
 			targetProxy = 23C3ABAD23FBCFE40079D9C3 /* PBXContainerItemProxy */;
 		};
+		23E825682575D17E0023A3C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23A2B7E8220792FE00B2FC77 /* DSFFloatLabelledTextControls */;
+			targetProxy = 23E825672575D17E0023A3C7 /* PBXContainerItemProxy */;
+		};
+		23E8256A2575D17E0023A3C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 23C3AB9923FBCFA30079D9C3 /* DSFFloatLabelledTextControls Demo objc */;
+			targetProxy = 23E825692575D17E0023A3C7 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -388,6 +433,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				23A2B7F1220792FF00B2FC77 /* Base */,
+				23E8256D2575D28A0023A3C7 /* ar */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -467,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -528,6 +575,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -666,6 +714,24 @@
 			};
 			name = Release;
 		};
+		23E825622575D1760023A3C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		23E825632575D1760023A3C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3L6RK3LGGW;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -701,6 +767,15 @@
 			buildConfigurations = (
 				23C3ABA823FBCFA40079D9C3 /* Debug */,
 				23C3ABA923FBCFA40079D9C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23E825642575D1760023A3C7 /* Build configuration list for PBXAggregateTarget "All" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23E825622575D1760023A3C7 /* Debug */,
+				23E825632575D1760023A3C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
