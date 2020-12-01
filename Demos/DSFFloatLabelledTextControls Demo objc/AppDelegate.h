@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@import DSFFloatLabelledTextField;
+
+@interface AppDelegate : NSObject <NSApplicationDelegate, DSFFloatLabelledTextFieldDelegate>
 
 
 @end

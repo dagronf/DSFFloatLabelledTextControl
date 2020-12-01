@@ -33,13 +33,17 @@ import Cocoa
 	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didShowFloatingLabel didShow: Bool)
 	/// Called when the field becomes or loses first responder status
 	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didFocus: Bool)
+	/// Called when the content of the field changes
+	@objc optional func floatLabelledTextFieldContentChanged(_ field: DSFFloatLabelledTextField)
 }
 
 /// An NSTextField that implements the Float Label Pattern
 @IBDesignable open class DSFFloatLabelledTextField: NSTextField {
 
-	/// Optional delegate to provide callbacks for the floating label state
-	@objc public weak var floatLabelDelegate: DSFFloatLabelledTextFieldDelegate?
+	/// Optional delegate to provide callbacks for the floating label state.
+	///
+	/// This delegate can be set via Interface Builder or programatically
+	@IBOutlet @objc public weak var floatLabelDelegate: DSFFloatLabelledTextFieldDelegate?
 
 	/// The size (in pt) of the floating label text
 	@IBInspectable public var placeholderTextSize: CGFloat = NSFont.smallSystemFontSize {
@@ -121,16 +125,6 @@ import Cocoa
 	/// Returns the total height of the control given the font settings
 	private var controlHeight: CGFloat {
 		return self.textHeight + self.placeholderSpacing + self.placeholderHeight
-	}
-
-	/// Returns of the color for the floating text
-	private var floatTextColor: NSColor {
-		if #available(macOS 10.14, *) {
-			return NSColor.controlAccentColor
-		}
-		else {
-			return NSColor.headerTextColor
-		}
 	}
 
 	open override var intrinsicContentSize: NSSize {
@@ -227,7 +221,7 @@ import Cocoa
 		self.floatingLabel.isBordered = false
 		self.floatingLabel.translatesAutoresizingMaskIntoConstraints = false
 		self.floatingLabel.font = NSFont.systemFont(ofSize: self.placeholderTextSize)
-		self.floatingLabel.textColor = self.floatTextColor
+		self.floatingLabel.textColor = NSColor.placeholderTextColor
 		self.floatingLabel.stringValue = self.placeholderString ?? ""
 		self.floatingLabel.alphaValue = 0.0
 		self.floatingLabel.alignment = self.alignment
@@ -318,7 +312,7 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 	// Change the floating label color to represent active state
 	private func setFloatingLabelActive(_ active: Bool) {
 		if active {
-			self.floatingLabel.textColor = self.floatTextColor
+			self.floatingLabel.textColor = NSColor.systemAccentColor
 		}
 		else {
 			self.floatingLabel.textColor = NSColor.placeholderTextColor
@@ -338,6 +332,8 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 		else if field.stringValue.count == 0, self.isShowing {
 			self.hidePlaceholder()
 		}
+
+		self.floatLabelDelegate?.floatLabelledTextFieldContentChanged?(self)
 	}
 
 	open override func becomeFirstResponder() -> Bool {
@@ -489,5 +485,51 @@ private class DSFFloatLabelledSecureTextFieldCell: NSSecureTextFieldCell, DSFFlo
 	override func drawInterior(withFrame cellFrame: NSRect, in controlView: NSView) {
 		let insetRect = NSRect(x: cellFrame.origin.x, y: cellFrame.origin.y + self.offset(), width: cellFrame.width, height: cellFrame.height)
 		super.drawInterior(withFrame: insetRect, in: controlView)
+	}
+}
+
+/// MARK: - Utilities
+
+fileprivate let kAccentColor: String = "AppleAccentColor"
+fileprivate extension NSColor {
+
+	/// The system accent color, with fallbacks for older macOS versions
+	static var systemAccentColor: NSColor {
+		if #available(OSX 10.14, *) {
+			// macOS 10.14 and above have a dedicated static NSColor
+			return NSColor.controlAccentColor
+		}
+
+		// Use standard user defaults for anything lower than 10.14
+		let userDefaults = UserDefaults.standard
+		guard userDefaults.object(forKey: kAccentColor) != nil else {
+			return DefaultColor()
+		}
+
+		return ColorForSystemColorOffset(userDefaults.integer(forKey: kAccentColor))
+	}
+
+	/// Map an integer value to a system color
+	static func ColorForSystemColorOffset(_ value: Int) -> NSColor {
+		switch value {
+		case -1: return NSColor.systemGray
+		case 0: return NSColor.systemRed
+		case 1: return NSColor.systemOrange
+		case 2: return NSColor.systemYellow
+		case 3: return NSColor.systemGreen
+		case 4: return NSColor.systemBlue
+		case 5: return NSColor.systemPurple
+		case 6: return NSColor.systemPink
+		default: return DefaultColor()
+		}
+	}
+
+	static func DefaultColor() -> NSColor {
+		if #available(OSX 11.0, *) {
+			return NSColor.systemGray
+		}
+		else {
+			return NSColor.systemBlue
+		}
 	}
 }

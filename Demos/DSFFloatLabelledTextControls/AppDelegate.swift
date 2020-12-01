@@ -35,6 +35,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet weak var window: NSWindow!
 	@IBOutlet weak var topFloatingLabel: DSFFloatLabelledTextField!
 
+	@IBOutlet weak var passwordFloatingLabel: DSFFloatLabelledTextField!
+
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
 
@@ -65,12 +67,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 									toItem: cv, attribute: .bottom,
 									multiplier: 1, constant: -20)
 		cv.addConstraint(x2)
-
-
-		// Check the delegate
-		self.topFloatingLabel.floatLabelDelegate = self
-
 	}
+
 	@IBAction func resetPressed(_ sender: Any) {
 		// Verify that when we programatically change the string value the control updates accordingly
 		self.topFloatingLabel.stringValue = "Reset the content"
@@ -80,16 +78,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationWillTerminate(_ aNotification: Notification) {
 		// Insert code here to tear down your application
 	}
-
-
 }
 
 extension AppDelegate: DSFFloatLabelledTextFieldDelegate {
 	func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didShowFloatingLabel didShow: Bool) {
-		Swift.print("Top level is \(didShow)")
+		if field === topFloatingLabel {
+			if didShow {
+				Swift.print("Title Field floating label is now visible")
+			}
+			else {
+				Swift.print("Title Field floating label is no longer visible")
+			}
+		}
 	}
 
 	func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didFocus: Bool) {
-		Swift.print("Top level focus is now \(didFocus)")
+		if field === topFloatingLabel {
+			if didFocus {
+				Swift.print("Title Field did focus")
+			}
+			else {
+				Swift.print("Title Field lost focus")
+			}
+		}
+	}
+
+	func floatLabelledTextFieldContentChanged(_ field: DSFFloatLabelledTextField) {
+		if field === passwordFloatingLabel {
+			Swift.print("Password is now '\(self.passwordFloatingLabel.stringValue)'")
+		}
 	}
 }

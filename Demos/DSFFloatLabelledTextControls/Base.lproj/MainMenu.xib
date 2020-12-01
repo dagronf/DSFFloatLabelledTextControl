@@ -15,6 +15,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DSFFloatLabelledTextControls" customModuleProvider="target">
             <connections>
+                <outlet property="passwordFloatingLabel" destination="VLP-0u-Kf3" id="9Lw-el-n78"/>
                 <outlet property="topFloatingLabel" destination="tnz-85-NdV" id="Pyt-zO-up9"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -709,6 +710,9 @@
                                             <real key="value" value="13"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outlet property="floatLabelDelegate" destination="Voe-Tx-rLC" id="62z-Xl-apm"/>
+                                    </connections>
                                 </textField>
                                 <button toolTip="Check for programattic changing of stringValue" horizontalHuggingPriority="999" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nTi-Ym-3BC">
                                     <rect key="frame" x="387" y="93" width="69" height="32"/>
@@ -885,6 +889,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSecure" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="floatLabelDelegate" destination="Voe-Tx-rLC" id="IaQ-aC-gRR"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-T7-eym" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
                                 <rect key="frame" x="0.0" y="30" width="250" height="22"/>

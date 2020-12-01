@@ -690,9 +690,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="138"/>
                 <subviews>
                     <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Xn-w2-ecV">
-                        <rect key="frame" x="20" y="20" width="440" height="98"/>
+                        <rect key="frame" x="20" y="27" width="440" height="98"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="XPK-cR-iSb" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XPK-cR-iSb" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
                                 <rect key="frame" x="0.0" y="66" width="440" height="32"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Title" id="PFO-GA-4nl">
                                     <font key="font" metaFont="system" size="24"/>
@@ -705,7 +705,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="5uu-Hi-xn8" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5uu-Hi-xn8" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
                                 <rect key="frame" x="0.0" y="33" width="440" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Subtitle text goes here" id="Uic-HN-dxQ">
                                     <font key="font" metaFont="system" size="18"/>
@@ -718,7 +718,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="257-gt-5Ui" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="257-gt-5Ui" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
                                 <rect key="frame" x="0.0" y="0.0" width="440" height="25"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="My Secret Password" id="Msd-kf-k0Q">
                                     <font key="font" metaFont="system" size="18"/>
@@ -731,6 +731,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSecure" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="floatLabelDelegate" destination="Voe-Tx-rLC" id="fDf-Y2-VaF"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <visibilityPriorities>
