@@ -24,7 +24,7 @@
 	// Insert code here to tear down your application
 }
 
-- (void)floatLabelledTextFieldContentChanged:(DSFFloatLabelledTextField *)field {
+- (void)floatLabelledTextFieldContentChanged:(DSFFloatLabelledSecureTextField *)field {
 	NSLog(@"Password is now `%@`", field.stringValue);
 }
 

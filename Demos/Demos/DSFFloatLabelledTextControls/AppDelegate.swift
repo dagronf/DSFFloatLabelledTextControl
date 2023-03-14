@@ -35,6 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet weak var window: NSWindow!
 	@IBOutlet weak var topFloatingLabel: DSFFloatLabelledTextField!
 
+	@IBOutlet weak var secureTextField: DSFFloatLabelledSecureTextField!
 	@IBOutlet weak var passwordFloatingLabel: DSFFloatLabelledTextField!
 
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -47,26 +48,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 		let cv = self.window.contentView!
 
-		let x = NSLayoutConstraint(item: ft, attribute: .width,
-								   relatedBy: .equal,
-								   toItem: nil, attribute: .notAnAttribute,
-								   multiplier: 1, constant: 300)
+		let x = NSLayoutConstraint(
+			item: ft, attribute: .width,
+			relatedBy: .equal,
+			toItem: nil, attribute: .notAnAttribute,
+			multiplier: 1, constant: 300
+		)
 		ft.addConstraint(x)
 		cv.addSubview(ft)
 
 
 
-		let x1 = NSLayoutConstraint(item: ft, attribute: .left,
-									relatedBy: .equal,
-									toItem: cv, attribute: .left,
-									multiplier: 1, constant: 20)
+		let x1 = NSLayoutConstraint(
+			item: ft, attribute: .leading,
+			relatedBy: .equal,
+			toItem: cv, attribute: .leading,
+			multiplier: 1, constant: 20
+		)
 		cv.addConstraint(x1)
 
-		let x2 = NSLayoutConstraint(item: ft, attribute: .bottom,
-									relatedBy: .equal,
-									toItem: cv, attribute: .bottom,
-									multiplier: 1, constant: -20)
+		let x2 = NSLayoutConstraint(
+			item: ft, attribute: .bottom,
+			relatedBy: .equal,
+			toItem: cv, attribute: .bottom,
+			multiplier: 1, constant: -20
+		)
 		cv.addConstraint(x2)
+
+		self.secureTextField.stringValue = "caterpillar"
 	}
 
 	@IBAction func resetPressed(_ sender: Any) {

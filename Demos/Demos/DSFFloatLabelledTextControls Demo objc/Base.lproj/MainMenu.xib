@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,21 +13,19 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DSFFloatLabelledTextControls" customModuleProvider="target">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
-                <outlet property="passwordFloatingLabel" destination="VLP-0u-Kf3" id="9Lw-el-n78"/>
-                <outlet property="topFloatingLabel" destination="tnz-85-NdV" id="Pyt-zO-up9"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="DSFFloatLabelledTextControls" id="1Xt-HY-uBw">
+                <menuItem title="DSFFloatLabelledTextControls Demo objc" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="DSFFloatLabelledTextControls" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="DSFFloatLabelledTextControls Demo objc" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About DSFFloatLabelledTextControls" id="5kV-Vb-QxS">
+                            <menuItem title="About DSFFloatLabelledTextControls Demo objc" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
@@ -41,7 +39,7 @@
                                 <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                            <menuItem title="Hide DSFFloatLabelledTextControls" keyEquivalent="h" id="Olw-nP-bQN">
+                            <menuItem title="Hide DSFFloatLabelledTextControls Demo objc" keyEquivalent="h" id="Olw-nP-bQN">
                                 <connections>
                                     <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
                                 </connections>
@@ -59,7 +57,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                            <menuItem title="Quit DSFFloatLabelledTextControls" keyEquivalent="q" id="4sb-4s-VLi">
+                            <menuItem title="Quit DSFFloatLabelledTextControls Demo objc" keyEquivalent="q" id="4sb-4s-VLi">
                                 <connections>
                                     <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
                                 </connections>
@@ -672,7 +670,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                         <items>
-                            <menuItem title="DSFFloatLabelledTextControls Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                            <menuItem title="DSFFloatLabelledTextControls Demo objc Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
                                 </connections>
@@ -683,268 +681,66 @@
             </items>
             <point key="canvasLocation" x="139" y="154"/>
         </menu>
-        <window title="Floating Labels Test" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="DSFFloatLabelledTextControls Demo objc" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="497" height="441"/>
+            <rect key="contentRect" x="335" y="390" width="480" height="145"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="497" height="491"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="138"/>
                 <subviews>
-                    <box boxType="secondary" title="Purchase Form" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-8U-z2F">
-                        <rect key="frame" x="17" y="333" width="463" height="140"/>
-                        <view key="contentView" id="fUJ-lp-O9s">
-                            <rect key="frame" x="3" y="3" width="457" height="134"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="tnz-85-NdV" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="12" y="97" width="374" height="25"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" title="Groovy Software v1" placeholderString="Title" id="ETD-Tb-a7N">
-                                        <font key="font" metaFont="system" size="18"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                            <real key="value" value="13"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <outlet property="floatLabelDelegate" destination="Voe-Tx-rLC" id="62z-Xl-apm"/>
-                                    </connections>
-                                </textField>
-                                <button toolTip="Check for programattic changing of stringValue" horizontalHuggingPriority="999" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nTi-Ym-3BC">
-                                    <rect key="frame" x="387" y="93" width="69" height="32"/>
-                                    <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pTp-yr-DKx">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="resetPressed:" target="Voe-Tx-rLC" id="keN-c6-1wD"/>
-                                    </connections>
-                                </button>
-                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pyP-dk-pAy">
-                                    <rect key="frame" x="12" y="86" width="437" height="5"/>
-                                </box>
-                                <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="zbB-HI-AVu" userLabel="Price Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="12" y="55" width="100" height="25"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="100" id="Dhv-LX-D4R"/>
-                                    </constraints>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" placeholderString="Price" id="doO-uJ-2o2">
-                                        <font key="font" metaFont="system" size="18"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                            <real key="value" value="13"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </textField>
-                                <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Mrp-MT-gGa">
-                                    <rect key="frame" x="117" y="46" width="5" height="43"/>
-                                </box>
-                                <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SAo-aL-Ofe" userLabel="Location Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="128" y="55" width="321" height="25"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" placeholderString="Specific Location (Optional)" id="BHQ-MA-tIJ">
-                                        <font key="font" metaFont="system" size="18"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                            <real key="value" value="13"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </textField>
-                                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="YiQ-45-hxx">
-                                    <rect key="frame" x="12" y="44" width="437" height="5"/>
-                                </box>
-                                <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="h8z-Ku-xLD" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                    <rect key="frame" x="12" y="13" width="437" height="25"/>
-                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" placeholderString="Description" id="XtC-Dr-5RL">
-                                        <font key="font" metaFont="system" size="18"/>
-                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    </textFieldCell>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                            <real key="value" value="13"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </textField>
-                            </subviews>
-                            <constraints>
-                                <constraint firstItem="h8z-Ku-xLD" firstAttribute="trailing" secondItem="YiQ-45-hxx" secondAttribute="trailing" id="0z4-yw-Tjz"/>
-                                <constraint firstAttribute="bottom" secondItem="h8z-Ku-xLD" secondAttribute="bottom" constant="13" id="4yB-Fg-z0j"/>
-                                <constraint firstItem="Mrp-MT-gGa" firstAttribute="top" secondItem="pyP-dk-pAy" secondAttribute="top" id="BXP-Wb-qUk"/>
-                                <constraint firstItem="SAo-aL-Ofe" firstAttribute="trailing" secondItem="nTi-Ym-3BC" secondAttribute="trailing" id="DaR-Ac-xRP"/>
-                                <constraint firstItem="h8z-Ku-xLD" firstAttribute="top" secondItem="YiQ-45-hxx" secondAttribute="bottom" constant="8" id="FfJ-N0-nTx"/>
-                                <constraint firstItem="h8z-Ku-xLD" firstAttribute="top" secondItem="SAo-aL-Ofe" secondAttribute="bottom" constant="17" id="OUL-bd-oAm"/>
-                                <constraint firstItem="tnz-85-NdV" firstAttribute="leading" secondItem="fUJ-lp-O9s" secondAttribute="leading" constant="12" id="PVy-mb-ISo"/>
-                                <constraint firstItem="YiQ-45-hxx" firstAttribute="trailing" secondItem="pyP-dk-pAy" secondAttribute="trailing" id="QpW-6E-w5N"/>
-                                <constraint firstItem="Mrp-MT-gGa" firstAttribute="leading" secondItem="zbB-HI-AVu" secondAttribute="trailing" constant="7" id="VVE-Kl-8L1"/>
-                                <constraint firstItem="zbB-HI-AVu" firstAttribute="leading" secondItem="pyP-dk-pAy" secondAttribute="leading" id="Ydy-yG-Syj"/>
-                                <constraint firstItem="h8z-Ku-xLD" firstAttribute="leading" secondItem="YiQ-45-hxx" secondAttribute="leading" id="aC0-1V-wVw"/>
-                                <constraint firstItem="Mrp-MT-gGa" firstAttribute="bottom" secondItem="YiQ-45-hxx" secondAttribute="bottom" id="cLL-EC-RgF"/>
-                                <constraint firstItem="pyP-dk-pAy" firstAttribute="leading" secondItem="tnz-85-NdV" secondAttribute="leading" id="d1u-4i-5OE"/>
-                                <constraint firstItem="pyP-dk-pAy" firstAttribute="trailing" secondItem="nTi-Ym-3BC" secondAttribute="trailing" id="eCw-zO-M0C"/>
-                                <constraint firstItem="nTi-Ym-3BC" firstAttribute="centerY" secondItem="tnz-85-NdV" secondAttribute="centerY" id="eVZ-GL-PaS"/>
-                                <constraint firstItem="YiQ-45-hxx" firstAttribute="leading" secondItem="pyP-dk-pAy" secondAttribute="leading" id="eeL-GP-OSM"/>
-                                <constraint firstItem="pyP-dk-pAy" firstAttribute="top" secondItem="tnz-85-NdV" secondAttribute="bottom" constant="8" id="mw3-F6-FcM"/>
-                                <constraint firstItem="nTi-Ym-3BC" firstAttribute="leading" secondItem="tnz-85-NdV" secondAttribute="trailing" constant="8" id="tqU-Lv-uve"/>
-                                <constraint firstItem="SAo-aL-Ofe" firstAttribute="leading" secondItem="Mrp-MT-gGa" secondAttribute="trailing" constant="8" id="uil-nb-XGc"/>
-                                <constraint firstItem="SAo-aL-Ofe" firstAttribute="centerY" secondItem="zbB-HI-AVu" secondAttribute="centerY" id="w3D-xV-SUh"/>
-                                <constraint firstAttribute="trailing" secondItem="nTi-Ym-3BC" secondAttribute="trailing" constant="8" id="xhA-vV-JjX"/>
-                                <constraint firstItem="zbB-HI-AVu" firstAttribute="top" secondItem="pyP-dk-pAy" secondAttribute="bottom" constant="8" id="zGg-pG-DlK"/>
-                                <constraint firstItem="tnz-85-NdV" firstAttribute="top" secondItem="fUJ-lp-O9s" secondAttribute="top" constant="12" id="zQh-X5-zRr"/>
-                            </constraints>
-                        </view>
-                    </box>
-                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="CVr-p8-VOx">
-                        <rect key="frame" x="20" y="303" width="457" height="5"/>
-                    </box>
-                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="waN-7O-qLn">
-                        <rect key="frame" x="20" y="242" width="457" height="33"/>
+                    <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Xn-w2-ecV">
+                        <rect key="frame" x="20" y="27" width="440" height="98"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="oU9-jl-8Ow" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="33"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Billy" placeholderString="First Name" drawsBackground="YES" id="5Wb-1R-5YV">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="XPK-cR-iSb" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
+                                <rect key="frame" x="0.0" y="66" width="440" height="32"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Title" id="PFO-GA-4nl">
                                     <font key="font" metaFont="system" size="24"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="14"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField horizontalHuggingPriority="50" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="fQG-V9-3hv" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                <rect key="frame" x="58" y="0.0" width="399" height="33"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Snedden" placeholderString="Last Name" drawsBackground="YES" id="74P-hN-0Vg">
-                                    <font key="font" metaFont="system" size="24"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="5uu-Hi-xn8" userLabel="Title Field" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
+                                <rect key="frame" x="0.0" y="33" width="440" height="25"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="Subtitle text goes here" id="Uic-HN-dxQ">
+                                    <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="14"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                        </subviews>
-                        <visibilityPriorities>
-                            <integer value="1000"/>
-                            <integer value="1000"/>
-                        </visibilityPriorities>
-                        <customSpacing>
-                            <real value="3.4028234663852886e+38"/>
-                            <real value="3.4028234663852886e+38"/>
-                        </customSpacing>
-                    </stackView>
-                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="QuB-jf-wmu">
-                        <rect key="frame" x="20" y="206" width="457" height="5"/>
-                    </box>
-                    <stackView distribution="fillEqually" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBs-1o-JjM">
-                        <rect key="frame" x="20" y="80" width="250" height="112"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3hp-BV-Ls3" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                <rect key="frame" x="0.0" y="90" width="250" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Billy Snedden" placeholderString="Licensee Name" drawsBackground="YES" id="I01-Tl-E8r">
-                                    <font key="font" metaFont="system" size="14"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="257-gt-5Ui" userLabel="Title Field" customClass="DSFFloatLabelledSecureTextField" customModule="DSFFloatLabelledTextField">
+                                <rect key="frame" x="0.0" y="0.0" width="440" height="25"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" alignment="left" placeholderString="My Secret Password" id="Msd-kf-k0Q">
+                                    <font key="font" metaFont="system" size="18"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="12"/>
+                                        <real key="value" value="13"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VLP-0u-Kf3" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                <rect key="frame" x="0.0" y="60" width="250" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="caterpillar" placeholderString="Password" drawsBackground="YES" id="2oD-a4-pQh">
-                                    <font key="font" metaFont="system" size="14"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSecure" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="floatLabelDelegate" destination="Voe-Tx-rLC" id="IaQ-aC-gRR"/>
+                                    <outlet property="floatLabelDelegate" destination="Voe-Tx-rLC" id="fDf-Y2-VaF"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MfQ-T7-eym" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                <rect key="frame" x="0.0" y="30" width="250" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="1DRF-1X" placeholderString="Serial Number" drawsBackground="YES" id="3Xv-o0-6Io">
-                                    <font key="font" metaFont="system" size="14"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField horizontalHuggingPriority="100" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ueu-5M-hVI" customClass="DSFFloatLabelledTextField" customModule="DSFFloatLabelledTextField">
-                                <rect key="frame" x="0.0" y="0.0" width="250" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="2" placeholderString="Maximum Clients" drawsBackground="YES" id="l0d-Jv-tQ6">
-                                    <font key="font" metaFont="system" size="14"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderTextSize">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="placeholderSpacing">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="VLP-0u-Kf3" firstAttribute="leading" secondItem="3hp-BV-Ls3" secondAttribute="leading" id="1tz-ab-IsB"/>
-                            <constraint firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="Cxv-bf-SFN"/>
-                            <constraint firstItem="ueu-5M-hVI" firstAttribute="leading" secondItem="3hp-BV-Ls3" secondAttribute="leading" id="HGs-7T-sEb"/>
-                            <constraint firstAttribute="width" constant="250" id="SfX-Wt-05r"/>
-                            <constraint firstItem="MfQ-T7-eym" firstAttribute="leading" secondItem="3hp-BV-Ls3" secondAttribute="leading" id="Xpi-7I-DrD"/>
-                            <constraint firstItem="MfQ-T7-eym" firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="YEC-So-F7G"/>
-                            <constraint firstItem="ueu-5M-hVI" firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="gq8-B3-sya"/>
-                            <constraint firstItem="VLP-0u-Kf3" firstAttribute="trailing" secondItem="3hp-BV-Ls3" secondAttribute="trailing" id="lxu-7C-U86"/>
-                            <constraint firstItem="3hp-BV-Ls3" firstAttribute="leading" secondItem="CBs-1o-JjM" secondAttribute="leading" id="w8m-Ox-vCH"/>
-                        </constraints>
                         <visibilityPriorities>
-                            <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
                             <integer value="1000"/>
                         </visibilityPriorities>
                         <customSpacing>
-                            <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
                             <real value="3.4028234663852886e+38"/>
@@ -952,26 +748,13 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="waN-7O-qLn" firstAttribute="top" secondItem="CVr-p8-VOx" secondAttribute="bottom" constant="30" id="BFV-AF-SSd"/>
-                    <constraint firstItem="waN-7O-qLn" firstAttribute="leading" secondItem="CVr-p8-VOx" secondAttribute="leading" id="BYZ-Nr-hH7"/>
-                    <constraint firstItem="pnz-8U-z2F" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="CJx-RO-Y5A"/>
-                    <constraint firstAttribute="trailing" secondItem="pnz-8U-z2F" secondAttribute="trailing" constant="20" id="DhA-55-3SS"/>
-                    <constraint firstItem="waN-7O-qLn" firstAttribute="trailing" secondItem="fUJ-lp-O9s" secondAttribute="trailing" id="FP9-KQ-wOg"/>
-                    <constraint firstItem="CBs-1o-JjM" firstAttribute="leading" secondItem="QuB-jf-wmu" secondAttribute="leading" id="KsE-re-V5Y"/>
-                    <constraint firstItem="waN-7O-qLn" firstAttribute="trailing" secondItem="CVr-p8-VOx" secondAttribute="trailing" id="M23-E7-Oxa"/>
-                    <constraint firstItem="waN-7O-qLn" firstAttribute="leading" secondItem="fUJ-lp-O9s" secondAttribute="leading" id="MA7-19-ktN"/>
-                    <constraint firstItem="QuB-jf-wmu" firstAttribute="leading" secondItem="waN-7O-qLn" secondAttribute="leading" id="PpT-Ip-Ejd"/>
-                    <constraint firstItem="CVr-p8-VOx" firstAttribute="leading" secondItem="pnz-8U-z2F" secondAttribute="leading" id="RxS-y7-lJv"/>
-                    <constraint firstItem="CVr-p8-VOx" firstAttribute="top" secondItem="pnz-8U-z2F" secondAttribute="bottom" constant="31" id="S2U-p1-kDW"/>
-                    <constraint firstItem="CVr-p8-VOx" firstAttribute="trailing" secondItem="pnz-8U-z2F" secondAttribute="trailing" id="YeB-dm-Iqe"/>
-                    <constraint firstItem="CBs-1o-JjM" firstAttribute="top" secondItem="QuB-jf-wmu" secondAttribute="bottom" constant="16" id="jow-KW-Jsp"/>
-                    <constraint firstItem="QuB-jf-wmu" firstAttribute="top" secondItem="waN-7O-qLn" secondAttribute="bottom" constant="33" id="kOR-Aa-Hyo"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="CBs-1o-JjM" secondAttribute="bottom" constant="80" id="zL9-6W-Unn"/>
-                    <constraint firstItem="QuB-jf-wmu" firstAttribute="trailing" secondItem="waN-7O-qLn" secondAttribute="trailing" id="zSQ-C8-zlQ"/>
-                    <constraint firstItem="pnz-8U-z2F" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="zgF-Fx-OjE"/>
+                    <constraint firstAttribute="trailing" secondItem="5Xn-w2-ecV" secondAttribute="trailing" constant="20" symbolic="YES" id="FBf-0I-IIa"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5Xn-w2-ecV" secondAttribute="bottom" constant="20" symbolic="YES" id="Sdh-oS-cCe"/>
+                    <constraint firstItem="5Xn-w2-ecV" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="wLY-Yu-p9z"/>
+                    <constraint firstItem="5Xn-w2-ecV" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="ztN-wM-TMN"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="-480" y="220"/>
+            <point key="canvasLocation" x="139" y="-227.5"/>
         </window>
     </objects>
 </document>

@@ -30,10 +30,10 @@ Copy the `DSFFloatLabelledTextField.swift` into your project.  This class inheri
 
 ### Interface builder
 
-* Drop in a new Text Field into your canvas and set its class to `DSFFloatLabelledTextField`
+* Drop in a new Text Field into your canvas and set its class to `DSFFloatLabelledTextField` or
+ `DSFFloatLabelledSecureTextControl` depending on whether you need a secure field
 * Set the size and style of your primary font as you would a regular text field
 * Set the size of the secondary font via the attributes inspector for the control
-* If you want a secure field, set the `isSecure` property on the control
 
 ### Dynamically
 
@@ -89,7 +89,7 @@ You can specify a delegate (`floatLabelDelegate`), either programatically or via
 ```
 MIT License
 
-Copyright (c) 2020 Darren Ford
+Copyright (c) 2023 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
