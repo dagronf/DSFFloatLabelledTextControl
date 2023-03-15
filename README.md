@@ -1,8 +1,9 @@
 # macOS Float Label Pattern Text Field
 
-A macOS Cocoa single-line NSTextField that implements the Float Label Pattern.  You can read about the float pattern [here](http://mds.is/float-label-pattern/). Usable in Swift and Objective-C projects.  Supports secure edit fields.
+A macOS Cocoa single-line NSTextField/NSSecureTextField that implements the Float Label Pattern. 
+You can read about the float pattern [here](http://mds.is/float-label-pattern/). 
 
-![](https://img.shields.io/github/v/tag/dagronf/DSFFloatLabelledTextControl) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/github/v/tag/dagronf/DSFFloatLabelledTextControl) ![](https://img.shields.io/badge/macOS-10.11+-red) ![](https://img.shields.io/badge/Swift-5.4-orange.svg) ![](https://img.shields.io/badge/ObjectiveC-2.0-purple.svg)
 ![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/pod-compatible-informational)](https://cocoapods.org) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
 ## Screenshot
@@ -22,9 +23,6 @@ Add `https://github.com/dagronf/DSFFloatLabelledTextControl` to your project.
 ### Cocoapods
 
 Add `pod 'DSFFloatLabelledTextControl', :git => 'https://github.com/dagronf/DSFFloatLabelledTextControl'` to your podfile.
-
-### Directly
-Copy the `DSFFloatLabelledTextField.swift` into your project.  This class inherits directly from `NSTextField` so all settings that you make on a text field (eg. alignment) should also apply here.
 
 ## Usage
 
@@ -48,31 +46,18 @@ parentView.addSubview(field)
 
 ## Custom Properties
 
-This control inherits from `NSTextField`, so all `NSTextField` functionalities (like cocoa binding and Interface Builder settings) are available.  If you can use an NSTextField, you can use this control.
+These controls inherit from `NSTextField`, so all `NSTextField` functionalities (like cocoa binding and Interface Builder settings) are available.  If you can use an NSTextField, you can use this control.
 
-`placeholderTextSize` - the size of the text used in the floating label (in pt)
-
-`placeholderSpacing` - the distance between the text field text and the floating label (in px)
+* `placeholderTextSize` - the size of the text used in the floating label (in pt)
+* `placeholderSpacing` - the distance between the text field text and the floating label (in px)
 
 ## Delegate Handling
 
 You can specify a delegate (`floatLabelDelegate`), either programatically or via Interface Builder, to receive additional information regarding the actions of the control.
 
-```swift
-@objc public protocol DSFFloatLabelledTextFieldDelegate: NSObjectProtocol {
-   /// Called when the label is shown or hidden
-   @objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didShowFloatingLabel didShow: Bool)
-   /// Called when the field becomes or loses first responder status
-   @objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didFocus: Bool)
-   /// Called when the content of the field changes
-   @objc optional func floatLabelledTextFieldContentChanged(_ field: DSFFloatLabelledTextField)
-}
-```
-
 ## Screenshot
 
 <img src="https://github.com/dagronf/dagronf.github.io/blob/master/art/projects/DSFFloatingLabel/light-mode-secure-field.png?raw=true" alt="drawing" width="265"/>
-
 
 ## Credits
 
@@ -82,7 +67,8 @@ You can specify a delegate (`floatLabelDelegate`), either programatically or via
 
 ## Versions
 
-* `1.8.0` Added secure text field support, delegate support
+* `2.0.0`: Moved secure text field into separate class (fixing security warnings in modern Xcode) 
+* `1.8.0`: Added secure text field support, delegate support
 
 ## License
 
