@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = ""
   s.osx.deployment_target = "10.11"
   s.source       = { :git => ".git", :tag => s.version.to_s }
-  s.source_files  = "Sources/DSFFloatLabelledTextControl/*.swift"
+  s.source_files  = "Sources/DSFFloatLabelledTextField/**/*.{swift}"
   s.frameworks  = "Cocoa"
   s.swift_version = "5.4"
 end
