@@ -1,5 +1,7 @@
+//  ** Automatically generated from DSFFloatLabelledTextField.swift.gyb **
 //
 //  DSFFloatLabelledSecureTextField.swift
+//  (generated using tools/regenerate-sources.sh)
 //
 //  Copyright © 2023 Darren Ford. All rights reserved.
 //
@@ -165,11 +167,6 @@ import AppKit
 	required public init?(coder: NSCoder) {
 		super.init(coder: coder)
 		self.setup()
-	}
-
-	open override func awakeFromNib() {
-		super.awakeFromNib()
-		
 	}
 
 	open override func viewDidMoveToWindow() {

@@ -1,6 +1,6 @@
 //  ** Automatically generated from DSFFloatLabelledTextField.swift.gyb **
 //
-//  DSFFloatLabelledTextField.swift
+//  DSFFloatLabelled${field_type}Field.swift
 //  (generated using tools/regenerate-sources.sh)
 //
 //  Copyright © 2023 Darren Ford. All rights reserved.
@@ -29,22 +29,22 @@
 import AppKit
 
 /// DSFFloatLabelledTextField delegate protocol
-@objc public protocol DSFFloatLabelledTextFieldDelegate: NSObjectProtocol {
+@objc public protocol DSFFloatLabelled${field_type}FieldDelegate: NSObjectProtocol {
 	/// Called when the label is shown or hidden
-	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didShowFloatingLabel didShow: Bool)
+	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelled${field_type}Field, didShowFloatingLabel didShow: Bool)
 	/// Called when the field becomes or loses first responder status
-	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelledTextField, didFocus: Bool)
+	@objc optional func floatLabelledTextField(_ field: DSFFloatLabelled${field_type}Field, didFocus: Bool)
 	/// Called when the content of the field changes
-	@objc optional func floatLabelledTextFieldContentChanged(_ field: DSFFloatLabelledTextField)
+	@objc optional func floatLabelledTextFieldContentChanged(_ field: DSFFloatLabelled${field_type}Field)
 }
 
-/// An NSTextField that implements the Float Label Pattern
-@IBDesignable open class DSFFloatLabelledTextField: NSTextField {
+/// An NS${field_type}Field that implements the Float Label Pattern
+@IBDesignable open class DSFFloatLabelled${field_type}Field: NS${field_type}Field {
 
 	/// Optional delegate to provide callbacks for the floating label state.
 	///
 	/// This delegate can be set via Interface Builder or programatically
-	@IBOutlet @objc public weak var floatLabelDelegate: DSFFloatLabelledTextFieldDelegate?
+	@IBOutlet @objc public weak var floatLabelDelegate: DSFFloatLabelled${field_type}FieldDelegate?
 
 	/// The size (in pt) of the floating label text
 	@IBInspectable public var placeholderTextSize: CGFloat = NSFont.smallSystemFontSize {
@@ -128,7 +128,7 @@ import AppKit
 	}
 
 	func configureCell() {
-		let customCell = DSFFloatLabelledTextFieldCell()
+		let customCell = DSFFloatLabelled${field_type}FieldCell()
 		customCell.isEditable = true
 		customCell.wraps = false
 		customCell.usesSingleLineMode = true
@@ -297,7 +297,7 @@ import AppKit
 
 // MARK: - Focus and editing
 
-extension DSFFloatLabelledTextField: NSTextFieldDelegate {
+extension DSFFloatLabelled${field_type}Field: NSTextFieldDelegate {
 
 	// Change the floating label color to represent active state
 	private func setFloatingLabelActive(_ active: Bool) {
@@ -364,7 +364,7 @@ extension DSFFloatLabelledTextField: NSTextFieldDelegate {
 
 // MARK: - Animations
 
-extension DSFFloatLabelledTextField {
+extension DSFFloatLabelled${field_type}Field {
 
 	/// Duration of the fade in/out of the secondary label
 	private var animationDuration: TimeInterval {
@@ -420,7 +420,7 @@ extension DSFFloatLabelledTextField {
 
 // MARK: - Cell definition
 
-private class DSFFloatLabelledTextFieldCell: NSTextFieldCell, DSFFloatLabelledTextFieldCellProtocol {
+private class DSFFloatLabelled${field_type}FieldCell: NS${field_type}FieldCell, DSFFloatLabelledTextFieldCellProtocol {
 	var topOffset: CGFloat = 0
 
 	private func offset() -> CGFloat {
